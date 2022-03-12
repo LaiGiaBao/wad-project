@@ -1,0 +1,12 @@
+.content {
+  width: 90%;
+  margin: auto;
+}
+.items {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+}
+h2 {
+  margin-top: 15px;
+  margin-left: 15px;
+}

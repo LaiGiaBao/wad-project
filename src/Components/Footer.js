@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="background">
       <button
         type="button"
-        class="btn btn-secondary up"
+        className="btn btn-secondary up"
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Go up"

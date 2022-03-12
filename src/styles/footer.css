@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
 .background {
   background-color: #8a929257;
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: 0%;
+  height: 100px;
   font-family: "Quicksand";
   font-size: 14px;
   font-weight: bolder;
