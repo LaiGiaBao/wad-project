@@ -15,6 +15,7 @@ import {
   brands,
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 import userEvent from "@testing-library/user-event";
+import "../styles/navbar.css";
 const userName = "Bao";
 const NavBarComp = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -22,7 +23,7 @@ const NavBarComp = () => {
     console.log(isSignedIn);
   });
   return (
-    <Navbar style={{ backgroundColor: "#F6416C" }} variant={"dark"} expand="lg">
+    <Navbar className="navbar" variant={"dark"} expand="lg">
       <Container fluid>
         <Navbar.Brand href="#" style={{ fontSize: "30px", fontWeight: "bold" }}>
           Shopping
@@ -36,6 +37,7 @@ const NavBarComp = () => {
           >
             <Nav.Link
               href="#action1"
+              className="nav-link"
               style={{ color: "white", fontSize: "20px" }}
             >
               <FontAwesomeIcon icon={solid("house")} />

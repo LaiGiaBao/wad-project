@@ -43,63 +43,21 @@ function App() {
     },
   ]);
   const categories = ["Sport Shoes", "Shirt"];
-  // const products = [
-  //   {
-  //     category: "Sport Shoes",
-  //     name: "NIKE AIR JORDAN 1 LOW 'BRED TOE'",
-  //     pictSource:
-  //       "https://cdn.vortexs.io/api/images/c7f404af-2b7b-4644-8b2d-1036ff7da950/1140/w/10670-giay-nike-air-jordan-1-low-bred-toe.jpeg",
-  //     price: "5,950,000đ",
-  //     sizes: [7, 8, 9],
-  //     colors: ["red", "smoke-grey", "black"],
-  //     id: 1,
-  //   },
-  //   {
-  //     category: "Sport Shoes",
-  //     name: "NIKE AIR JORDAN 1 LOW 'BLACK UNIVERSITY BLUE'",
-  //     pictSource:
-  //       "https://cdn.vortexs.io/api/images/1f4a83f8-581a-4774-bd71-9df7b9496314/1140/w/giay-nike-air-jordan-1-low-black-university-blue.jpeg",
-  //     price: "5,450,000đ",
-  //     sizes: [9, 10, 11, 12],
-  //     colors: ["red", "smoke-grey", "black"],
-  //     id: 2,
-  //   },
-  //   {
-  //     category: "Sport Shoes",
-  //     name: "NIKE BLAZER MID 77",
-  //     pictSource:
-  //       "https://cdn.vortexs.io/api/images/41f71f18-5d2a-408a-a746-5080847c87cf/1140/w/8539-nike-blazer-mid-77-white-blac.jpeg",
-  //     price: "2,950,000đ",
-  //     sizes: [9, 10],
-  //     colors: ["red", "smoke-grey", "black"],
-  //     id: 3,
-  //   },
-  // // ];
-  // const productNeeded = products.filter((product,index) => {
-  //   product.category === categories[product.id];
-  // });
-  // console.log(productNeeded);
-  const RenderCate = ({ categories }) => {
+  const RenderProducts = ({ categories }) => {
     return categories.map((category) => {
       return (
-        <Fragment>
-          {/* <h2>{category}</h2>
-          {products.map((product, index) => {
-            product.filter((productFiltered) => {
-              productFiltered.category === categories[index];
-              console.log(productFiltered);
-              // return <CardProduct product={product} key={product.id} />;
-            });
-          })} */}
+        <div className="product-list">
           <h2>{category}</h2>
-          {products
-            .filter(
-              (productsFiltered) => productsFiltered.category === category
-            )
-            .map((product) => (
-              <CardProduct product={product} key={product.id} />
-            ))}
-        </Fragment>
+          <div className="items">
+            {products
+              .filter(
+                (productsFiltered) => productsFiltered.category === category
+              )
+              .map((product) => (
+                <CardProduct product={product} key={product.id} />
+              ))}
+          </div>
+        </div>
       );
     });
   };
@@ -107,14 +65,7 @@ function App() {
     <div className="App">
       <MainLayout>
         <div className="content">
-          <RenderCate categories={categories} />
-
-          {/* <h2>{products[0].category}</h2>
-          <div className="items">
-            {products.map((product) => (
-              <CardProduct product={product} key={product.id}></CardProduct>
-            ))}
-          </div> */}
+          <RenderProducts categories={categories} />
         </div>
       </MainLayout>
     </div>
