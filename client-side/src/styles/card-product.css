@@ -1,0 +1,143 @@
+.card {
+  width: 320px;
+  height: 500px;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+  display: inline-flex;
+}
+
+.card_like,
+.card_cart {
+  font-size: 25px;
+  left: 20px;
+  top: 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.card_cart {
+  left: unset;
+  right: 20px;
+  cursor: pointer;
+}
+.card_img {
+  width: 90%;
+  height: 40%;
+}
+.card_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card_title,
+.card_price {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: 0.5s;
+  animation-delay: 0.2s;
+}
+
+.card_size,
+.card_color {
+  display: flex;
+  align-items: center;
+}
+
+.card_size span {
+  padding: 2px 5px;
+  background: yellowgreen;
+  border-radius: 5px;
+  margin: 0px 2px;
+  cursor: pointer;
+}
+.card_color span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+.card_size,
+.card_color,
+.card_action {
+  margin-bottom: 10px;
+}
+
+.red {
+  background: red;
+}
+.smoke-grey {
+  background: grey;
+}
+.black {
+  background: black;
+}
+
+.card_action button {
+  background: aqua;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 5px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+
+
+.card_action button :hover {
+  transform: scale(0.9);
+}
+
+.card:hover .card_img{
+  transform:  translateY(-97px) rotate(-20deg);
+  opacity: 1;
+  transition: 0.5s;
+  transition-delay: 0.2s;
+}
+
+.card:not(:hover) .card_img{
+  opacity: 1;
+  transition: 0.5s;
+  transition-delay: 0.1s;
+}
+
+.card:hover .card_title{
+  transform: translate(1px,-50px);
+}
+
+.card:hover .card_price{
+  transform: translate(-25px,-49px);
+}
+
+.card_size {
+  margin-top: 150px;
+}
+.card_size,
+.card_color,
+.card_action {
+  margin-top: 20px;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.card:hover .card_size,
+.card:hover .card_color,
+.card:hover .card_action {
+  visibility: visible;
+  opacity: 100;
+  transition: 0.5s;
+  transition-delay: 0.3s;
+}
+
+.card:hover .card_size {
+  margin-top: -30px;
+}

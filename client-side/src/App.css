@@ -1,0 +1,17 @@
+.content {
+  width: 90%;
+  margin: auto;
+  justify-items: center;
+}
+.items {
+  display: grid;
+  grid-template-columns: 33.3% 33.3% 33.3%;
+}
+.product-list h2 {
+  font-size: 40px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  text-align: center;
+  font-weight: bold;
+}
