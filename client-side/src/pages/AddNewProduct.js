@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import "../styles/add-product.css";
 function AddNewProduct() {
   const initialValues = {
     name: "",
