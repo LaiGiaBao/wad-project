@@ -19,9 +19,6 @@ import "../styles/navbar.css";
 const userName = "Bao";
 const NavBarComp = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  useEffect(() => {
-    console.log(isSignedIn);
-  });
   return (
     <Navbar className="navbar" variant={"dark"} expand="lg">
       <Container fluid>

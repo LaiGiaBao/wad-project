@@ -1,7 +1,11 @@
 import React from "react";
 import "../styles/card-product.css";
 const CardProduct = (props) => {
-  const { pictSource, name, price, sizes, colors } = props.product;
+  const { pictSource, name, price, colors, sizes } = props.product;
+  // console.log(typeof colors);
+  const listOfColors = colors.split(",");
+  const listOfSizes = sizes.split(",");
+  // const sizes = props.product.sizes.split(",");
   return (
     <div className="card">
       <div className="card_like">
@@ -29,7 +33,9 @@ const CardProduct = (props) => {
         {/* {sizes.map((size) => (
           <span>{size}</span>
         ))} */}
-        <span>{sizes}</span>
+        {listOfSizes.map((size) => (
+          <span key={size}>{size}</span>
+        ))}
       </div>
       <div className="card_color">
         <h3>Color: </h3>
@@ -39,7 +45,10 @@ const CardProduct = (props) => {
         {/* {colors.map((color) => (
           <span className={color}></span>
         ))} */}
-        <span style={{ background: colors }}></span>
+        {listOfColors.map((color) => (
+          <span key={color} style={{ background: color }}></span>
+        ))}
+        {/* <span style={{ background: colors }}></span> */}
       </div>
       <div className="card_action">
         <button className="Buy">Buy</button>
