@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
+import "../styles/add-product.css";
+
 function AddNewProduct() {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
@@ -33,6 +35,7 @@ function AddNewProduct() {
       console.log(data);
     });
   };
+
   return (
     <div className="create-product-page">
       <Formik
@@ -41,7 +44,7 @@ function AddNewProduct() {
         validation={validationSchema}
       >
         <Form>
-          <label>Name:</label>
+          <label htmlFor="name">Name:</label>
           <ErrorMessage name="name" component="span" />
           <Field id="inputCreatePost" name="name"></Field>
           <label>Category:</label>
@@ -59,17 +62,17 @@ function AddNewProduct() {
           <label>Price:</label>
           <ErrorMessage name="price" component="span" />
           <Field id="inputCreatePost" name="price"></Field>
-          <label>Sizes:</label>
+          <label htmlFor="size">Sizes:</label>
           <ErrorMessage name="sizes" component="span" />
           <Field id="inputCreatePost" name="sizes"></Field>
-          <label>Colors:</label>
+          <label htmlFor="colors">Colors:</label>
           <ErrorMessage name="colors" component="span" />
           <Field id="inputCreatePost" name="colors"></Field>
-          <label>PictSource:</label>
+          <label htmlFor="pictSource">PictSource:</label>
           <ErrorMessage name="pictSource" component="span" />
           <Field id="inputCreatePost" name="pictSource"></Field>
-          <label>Description:</label>
-          <ErrorMessage name="pictSource" component="span" />
+          <label htmlFor="description">Description:</label>
+          <ErrorMessage name="description" component="span" />
           <Field id="inputCreatePost" name="description" as="textarea"></Field>
           <button type="submit">Create Product</button>
         </Form>
