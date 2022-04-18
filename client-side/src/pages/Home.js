@@ -1,38 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import CardProduct from "../Components/CardProduct";
 import axios from "axios";
 import MainLayout from "../Components/MainLayout";
 import "../styles/card-product.css";
+import { AuthContext } from "../helpers/AuthContext";
 function Home() {
   const [listOfProducts, setListOfProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const { searchText, setSearchText } = useContext(AuthContext);
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
       setListOfProducts(response.data);
     });
+    axios.get("http://localhost:3001/categories").then((response) => {
+      setCategories(response.data);
+    });
   }, []);
-  const categories = ["Shoes", "Shirt"];
-  const RenderProducts = ({ categories }) => {
+  const RenderProducts = () => {
     return categories.map((category) => {
-      return (
-        <div key={category} className="product-list">
-          <h2>{category}</h2>
-          <div className="items">
-            {listOfProducts
-              .filter(
-                (productsFiltered) => productsFiltered.category === category
-              )
-              .map((product) => (
+      const listOfFilteredProducts = listOfProducts.filter(
+        (product) => product.category === category.id.toString()
+      );
+      if (listOfFilteredProducts.length !== 0)
+        return (
+          <div key={category.id} className="product-list">
+            <h2>{category.category}</h2>
+            <div className="items">
+              {listOfFilteredProducts.map((product) => (
                 <CardProduct product={product} key={product.id} />
               ))}
+            </div>
           </div>
-        </div>
-      );
+        );
     });
   };
+
   return (
     <MainLayout>
       <div className="content">
-        <RenderProducts categories={categories} />
+        {!searchText ? (
+          <RenderProducts />
+        ) : (
+          listOfProducts
+            .filter((product) =>
+              product.name.toLowerCase().includes(searchText)
+            )
+            .map((filtered) => (
+              <CardProduct product={filtered} key={filtered.id} />
+            ))
+        )}
       </div>
     </MainLayout>
   );

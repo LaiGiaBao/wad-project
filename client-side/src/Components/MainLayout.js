@@ -3,9 +3,10 @@ import NavBarComp from "./NavBarComp";
 import Footer from "./Footer";
 import CarouselLayout from "./CarouselLayout";
 const MainLayout = (props) => {
+  const userName = "Bao";
   return (
     <div className="App">
-      <NavBarComp />
+      {/* <NavBarComp /> */}
       <CarouselLayout />
       {props.children}
       <Footer />

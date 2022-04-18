@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component, useState, useEffect, useContext } from "react";
 import {
   Navbar,
   Nav,
@@ -16,13 +16,23 @@ import {
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 import userEvent from "@testing-library/user-event";
 import "../styles/navbar.css";
-const userName = "Bao";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../helpers/AuthContext";
 const NavBarComp = () => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const { searchText, setSearchText } = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext);
+  const [inputText, setInputText] = useState("");
+  const navigate = useNavigate();
+  const logOut = () => {
+    localStorage.removeItem("accessToken");
+    setAuthState({ username: "", id: 0, fullname: "", status: false });
+    navigate("/");
+  };
+
   return (
     <Navbar className="navbar" variant={"dark"} expand="lg">
       <Container fluid>
-        <Navbar.Brand href="#" style={{ fontSize: "30px", fontWeight: "bold" }}>
+        <Navbar.Brand href="/" style={{ fontSize: "30px", fontWeight: "bold" }}>
           Shopping
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -33,7 +43,7 @@ const NavBarComp = () => {
             navbarScroll
           >
             <Nav.Link
-              href="#action1"
+              href="/"
               className="nav-link"
               style={{ color: "white", fontSize: "20px" }}
             >
@@ -45,26 +55,37 @@ const NavBarComp = () => {
                 placeholder="Search"
                 className="mx-2"
                 aria-label="Search"
+                name="searchInput"
                 style={{ width: "300px" }}
+                onChange={(event) => {
+                  setInputText(event.target.value);
+                }}
               />
-              <Button variant="outline-light">Search</Button>
+              <Button
+                variant="outline-light"
+                onClick={() => {
+                  console.log(inputText.toLowerCase());
+                  setSearchText(inputText.toLowerCase());
+                }}
+              >
+                Search
+              </Button>
             </Form>
           </Nav>
-          {!isSignedIn && (
+          {!authState.status ? (
             <Nav>
               <Nav.Item>
-                <Nav.Link href="#action2" className="">
+                <Nav.Link href="/register" className="">
                   Sign-Up
                 </Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link onClick={() => setIsSignedIn(true)} className="">
-                  Sign-In
+                <Nav.Link href="/login" className="">
+                  Login
                 </Nav.Link>
               </Nav.Item>
             </Nav>
-          )}
-          {isSignedIn && (
+          ) : (
             <Nav>
               <Nav.Link
                 href="/cart"
@@ -78,7 +99,7 @@ const NavBarComp = () => {
                 title={
                   <span>
                     <FontAwesomeIcon icon={solid("user")}></FontAwesomeIcon>
-                    &nbsp; Hello, {userName}
+                    &nbsp; Hello, {authState.fullname.split(" ")[0]}
                   </span>
                 }
                 id="basic-nav-dropdown"
@@ -88,7 +109,13 @@ const NavBarComp = () => {
                   marginRight: "12px",
                 }}
               >
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => {
+                    navigate(`./profile/${authState.id}`);
+                  }}
+                >
+                  Profile
+                </NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Another action
                 </NavDropdown.Item>
@@ -97,8 +124,9 @@ const NavBarComp = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item
-                  href="#action/3.4"
-                  onClick={() => setIsSignedIn(false)}
+                  onClick={() => {
+                    logOut();
+                  }}
                 >
                   Log out
                 </NavDropdown.Item>

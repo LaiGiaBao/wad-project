@@ -11,4 +11,9 @@ router.post("/", async (req, res) => {
   await Products.create(product);
   res.json(product);
 });
+router.get("/byId/:id", async (req, res) => {
+  const id = req.params.id;
+  const product = await Products.findByPk(id);
+  res.json(product);
+});
 module.exports = router;

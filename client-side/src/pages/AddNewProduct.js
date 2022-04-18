@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 function AddNewProduct() {
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:3001/categories").then((response) => {
+      setCategories(response.data);
+    });
+  }, []);
+  console.log(categories);
   const initialValues = {
     name: "",
     category: "",
@@ -23,6 +30,7 @@ function AddNewProduct() {
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/products", data).then((response) => {
       console.log("Product has been uploaded");
+      console.log(data);
     });
   };
   return (
@@ -37,8 +45,17 @@ function AddNewProduct() {
           <ErrorMessage name="name" component="span" />
           <Field id="inputCreatePost" name="name"></Field>
           <label>Category:</label>
-          <ErrorMessage name="Category" component="span" />
-          <Field id="inputCreatePost" name="category"></Field>
+          <ErrorMessage name="category" component="span" />
+          <Field id="inputCreatePost" name="category" component="select">
+            <option value="" label="Select a category"></option>
+            {categories.map((category) => (
+              <option
+                value={category.id}
+                key={category.id}
+                label={category.category}
+              ></option>
+            ))}
+          </Field>
           <label>Price:</label>
           <ErrorMessage name="price" component="span" />
           <Field id="inputCreatePost" name="price"></Field>
