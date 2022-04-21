@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import { AuthContext } from "./helpers/AuthContext";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   const [authState, setAuthState] = useState(false);
   useEffect(() => {
