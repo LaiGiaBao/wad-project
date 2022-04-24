@@ -18,6 +18,10 @@ const usersRouter = require("./routes/users");
 app.use("/auth", usersRouter);
 const categoriesRouter = require("./routes/categories");
 app.use("/categories", categoriesRouter);
+const cartsRouter = require("./routes/carts");
+app.use("/carts", cartsRouter);
+const cartDetailsRouter = require("./routes/cart-details");
+app.use("/cart-details", cartDetailsRouter);
 db.sequelize.sync().then(() => {
   app.listen(3001, () => {
     console.log("Server running on port 3001");

@@ -25,7 +25,13 @@ const NavBarComp = () => {
   const navigate = useNavigate();
   const logOut = () => {
     localStorage.removeItem("accessToken");
-    setAuthState({ username: "", id: 0, fullname: "", status: false });
+    setAuthState({
+      ...authState,
+      username: "",
+      id: 0,
+      fullname: "",
+      status: false,
+    });
     navigate("/");
   };
 
@@ -88,9 +94,10 @@ const NavBarComp = () => {
           ) : (
             <Nav>
               <Nav.Link
-                href="/cart"
+                href={`/cart-details/${authState.cartId}`}
                 style={{ fontSize: "18px", marginRight: "8px" }}
               >
+                {console.log(authState)}
                 <FontAwesomeIcon
                   icon={solid("cart-shopping")}
                 ></FontAwesomeIcon>

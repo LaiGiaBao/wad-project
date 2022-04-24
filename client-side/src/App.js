@@ -12,15 +12,18 @@ import Product from "./pages/Product";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import CartDetails from "./pages/CartDetails";
 
 function App() {
   const [authState, setAuthState] = useState({
     username: "",
     fullname: "",
     id: 0,
+    cartId: 0,
     status: false,
   });
   const [searchText, setSearchText] = useState("");
+  const [cartDetails, setCartDetails] = useState([]);
   useEffect(() => {
     axios
       .get("http://localhost:3001/auth/auth", {
@@ -33,6 +36,7 @@ function App() {
           setAuthState({ ...authState, status: false });
         } else {
           setAuthState({
+            ...authState,
             username: response.data.username,
             id: response.data.id,
             fullname: response.data.fullname,
@@ -44,7 +48,14 @@ function App() {
   return (
     <div className="App">
       <AuthContext.Provider
-        value={{ authState, setAuthState, searchText, setSearchText }}
+        value={{
+          authState,
+          setAuthState,
+          searchText,
+          setSearchText,
+          cartDetails,
+          setCartDetails,
+        }}
       >
         <Router>
           <NavBarComp />
@@ -55,6 +66,11 @@ function App() {
             <Route path="/register" exact element={<Register />}></Route>
             <Route path="/login" exact element={<Login />}></Route>
             <Route path="/profile/:id" exact element={<Profile />}></Route>
+            <Route
+              path="/cart-details/:id"
+              exact
+              element={<CartDetails />}
+            ></Route>
           </Routes>
         </Router>
       </AuthContext.Provider>
