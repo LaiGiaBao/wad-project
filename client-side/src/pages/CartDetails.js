@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
 import CurrencyFormat from "react-currency-format";
@@ -7,6 +7,7 @@ function CartDetails() {
   let { id } = useParams();
   const [cartDetails, setCartDetails] = useState([]);
   const { authState } = useContext(AuthContext);
+  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(`http://localhost:3001/cart-details/byCartId/${id}`)
@@ -15,8 +16,22 @@ function CartDetails() {
         setCartDetails(response.data);
       });
   }, []);
+
   console.log(cartDetails);
   let totalPrice = 0;
+  const updateDetailCart = (totalPrice) => {
+    axios.put(
+      `http://localhost:3001/carts/totalPrice`,
+      {
+        totalPrice: totalPrice,
+        cartId: id,
+      },
+      {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      }
+    );
+    alert("BUY SUCCESSFUL");
+  };
   return (
     <div>
       <h2>Products in Cart</h2>
@@ -29,11 +44,11 @@ function CartDetails() {
           </tr>
         </thead>
         <tbody>
-          {cartDetails.map((details) => {
+          {cartDetails.map((details, index) => {
             totalPrice += details.Price;
             return (
-              <tr key={details.id}>
-                <td>{details.ProductId}</td>
+              <tr key={index}>
+                <td>{details.name}</td>
                 <td>{details.Quantity}</td>
                 <td>
                   <CurrencyFormat
@@ -62,6 +77,7 @@ function CartDetails() {
           </tr>
         </tfoot>
       </table>
+      <button onClick={() => updateDetailCart(totalPrice)}>Confirm</button>
     </div>
   );
 }

@@ -22,7 +22,7 @@ const CardProduct = ({ product }) => {
         axios
           .post("http://localhost:3001/cart-details", data)
           .then((response) => {
-            console.log(response.data);
+            // console.log(response.data);
           });
       });
   };

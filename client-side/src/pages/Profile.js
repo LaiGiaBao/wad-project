@@ -30,10 +30,12 @@ function Profile() {
         <h2>List of your carts</h2>
         <table>
           <thead>
-            <th>ID</th>
-            <th>Date Created</th>
-            <th>Total Price</th>
-            <th>Details</th>
+            <tr>
+              <th>ID</th>
+              <th>Date Created</th>
+              <th>Total Price</th>
+              <th>Details</th>
+            </tr>
           </thead>
           {listOfCarts.map((cart) => (
             <tr>
@@ -43,7 +45,9 @@ function Profile() {
               </td>
               <td>{cart.totalPrice}</td>
               <td>
-                <button onClick={() => navigate("/")}>Click Here</button>
+                <button onClick={() => navigate(`/cart-details/${cart.id}`)}>
+                  Click Here
+                </button>
               </td>
             </tr>
           ))}

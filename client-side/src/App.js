@@ -15,11 +15,12 @@ import Profile from "./pages/Profile";
 import CartDetails from "./pages/CartDetails";
 
 function App() {
+  const [cartId, setCartId] = useState(0);
   const [authState, setAuthState] = useState({
     username: "",
     fullname: "",
     id: 0,
-    cartId: 0,
+    // cartId: 0,
     status: false,
   });
   const [searchText, setSearchText] = useState("");
@@ -55,6 +56,8 @@ function App() {
           setSearchText,
           cartDetails,
           setCartDetails,
+          cartId,
+          setCartId,
         }}
       >
         <Router>

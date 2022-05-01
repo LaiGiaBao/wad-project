@@ -9,7 +9,7 @@ function Login() {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthState, authState } = useContext(AuthContext);
+  const { setAuthState, authState, setCartId } = useContext(AuthContext);
   const login = () => {
     const data = {
       username: username,
@@ -19,39 +19,39 @@ function Login() {
       if (response.data.error) {
         alert(response.data.error);
       } else {
-        localStorage.setItem("accessToken", response.data.token);
+        console.log(response.data);
+        let { data: user } = response;
+        localStorage.setItem("accessToken", user.token);
+        if (user.cartStatus == true) {
+          user.cartId++;
+          axios
+            .post(
+              "http://localhost:3001/carts",
+              {
+                UserId: user.id,
+                totalPrice: 0,
+              },
+              {
+                headers: {
+                  accessToken: localStorage.getItem("accessToken"),
+                },
+              }
+            )
+            .then((response) => {
+              console.log(
+                "Create new Cart because the previous cart is completed"
+              );
+            });
+        }
         setAuthState({
           ...authState,
-          username: response.data.username,
-          id: response.data.id,
-          fullname: response.data.fullname,
-          status: true,
+          username: user.username,
+          id: user.id,
+          fullname: user.fullname,
+          cartId: user.cartId,
         });
-        console.log(response.data);
+        setCartId(user.cartId);
         navigate("/");
-        axios
-          .post(
-            "http://localhost:3001/carts",
-            {
-              UserId: authState.id,
-              totalPrice: 0,
-            },
-            {
-              headers: { accessToken: localStorage.getItem("accessToken") },
-            }
-          )
-          .then((response) => {
-            axios
-              .get(
-                `http://localhost:3001/carts/byUserId/${response.data.UserId}`
-              )
-              .then((response) => {
-                setAuthState({
-                  ...authState,
-                  cartId: response.data[response.data.length - 1].id,
-                });
-              });
-          });
       }
     });
   };
