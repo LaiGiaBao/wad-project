@@ -7,7 +7,7 @@ import { AuthContext } from "../helpers/AuthContext";
 function Home() {
   const [listOfProducts, setListOfProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const { searchText, setSearchText } = useContext(AuthContext);
+  const { searchText, setSearchText, cartId } = useContext(AuthContext);
   useEffect(() => {
     axios.get("http://localhost:3001/products").then((response) => {
       setListOfProducts(response.data);
@@ -21,17 +21,16 @@ function Home() {
       const listOfFilteredProducts = listOfProducts.filter(
         (product) => product.category === category.id.toString()
       );
-      if (listOfFilteredProducts.length !== 0)
-        return (
-          <div key={category.id} className="product-list">
-            <h2>{category.category}</h2>
-            <div className="items">
-              {listOfFilteredProducts.map((product) => (
-                <CardProduct product={product} key={product.id} />
-              ))}
-            </div>
+      return (
+        <div key={category.id} className="product-list">
+          <h2>{category.category}</h2>
+          <div className="items">
+            {listOfFilteredProducts.map((product) => (
+              <CardProduct product={product} key={product.id} />
+            ))}
           </div>
-        );
+        </div>
+      );
     });
   };
 

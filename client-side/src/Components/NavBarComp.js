@@ -14,13 +14,13 @@ import {
   regular,
   brands,
 } from "@fortawesome/fontawesome-svg-core/import.macro";
-import userEvent from "@testing-library/user-event";
 import "../styles/navbar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 const NavBarComp = () => {
   const { searchText, setSearchText } = useContext(AuthContext);
   const { authState, setAuthState } = useContext(AuthContext);
+  const { cartId, setCartId } = useContext(AuthContext);
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
   const logOut = () => {
@@ -94,10 +94,9 @@ const NavBarComp = () => {
           ) : (
             <Nav>
               <Nav.Link
-                href={`/cart-details/${authState.cartId}`}
+                href={`/cart-details/${cartId}`}
                 style={{ fontSize: "18px", marginRight: "8px" }}
               >
-                {console.log(authState)}
                 <FontAwesomeIcon
                   icon={solid("cart-shopping")}
                 ></FontAwesomeIcon>
