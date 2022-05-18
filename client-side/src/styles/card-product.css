@@ -27,6 +27,9 @@
 .card_img {
   width: 90%;
   height: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
 }
 .card_img img {
   width: 100%;
@@ -111,10 +114,14 @@
 }
 
 .card:hover .card_title{
+  transition: 0.5s;
+  transition-delay: 0.3s;
   transform: translate(1px,-50px);
 }
 
 .card:hover .card_price{
+  transition: 0.5s;
+  transition-delay: 0.3s;
   transform: translate(1px,-49px);
 }
 

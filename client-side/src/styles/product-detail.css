@@ -85,6 +85,27 @@
   margin-top: 15px;
 }
 
+.comment-bt{
+  background: rgb(207, 216, 222);
+  color: rgb(102, 96, 113);
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-bt:hover {
+  background-color: #a7c1ce;
+  color: rgb(27, 26, 29);
+  
+}
+
+.comment-bt:focus {
+  background-color: #9594c9;
+  color: rgb(27, 26, 29);
+  outline: none;
+  border: none;
+}
+
 @media (max-width: 500px) {
   .thumb {
     height: 50px;

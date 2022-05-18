@@ -6,7 +6,7 @@ import "../styles/add-product.css";
 
 function AddNewProduct() {
   const [categories, setCategories] = useState([]);
-  const [productImg, setProductImg] = useState();
+  const [productImg, setProductImg] = useState("");
 
   useEffect(() => {
     axios.get("http://localhost:3001/categories").then((response) => {
@@ -39,6 +39,13 @@ function AddNewProduct() {
     });
   };
 
+  const OnFormChange = (data) => {
+    if (data.name == "pictSource")
+    {
+      setProductImg(data.value);
+    }   
+  }
+
   return (
     <div className="container-fluid h-custom">
       <div class="row d-flex justify-content-center align-items-center h-100 py-5">
@@ -48,7 +55,7 @@ function AddNewProduct() {
           onSubmit={onSubmit}
           validation={validationSchema}
           >
-            <Form>
+            <Form onChange = {(event) => OnFormChange(event.target)}>
               <div class=""> 
                 <label htmlFor="name">Name:</label>
                 <ErrorMessage name="name" component="span" />
@@ -70,9 +77,8 @@ function AddNewProduct() {
               <Field 
                 class="form-control form-control-lg" 
                 placeholder="Picture Source" 
-                id="inputCreatePost" name="pictSource"
-                value = {productImg}
-                onChange = {(event)=> setProductImg(event.target.value)}
+                id="inputCreatePost" 
+                name="pictSource"
                 ></Field>
 
               <div class = "row py-3 pb-5">
@@ -114,7 +120,7 @@ function AddNewProduct() {
         <div class="col-md-5">
           <h2 class="text-center"> Product preview </h2>
           <div class="col-md-12">
-            <img class="img-fluid mx-auto d-block w-75" src = {productImg} alt="" onerror="this.onerror=null"></img>
+            <img class="img-fluid mx-auto d-block w-75" src = {productImg} alt=""></img>
           </div>
           
         </div>
