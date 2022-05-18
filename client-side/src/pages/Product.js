@@ -97,38 +97,44 @@ function Product() {
     // </div>
     <div className="container-fluid h-custom">
        <div class="row d-flex justify-content-center align-items-center h-100 py-5 my-5">
-        <div class="col-md-3">
-          <div className="col-md-12">
-            <img class = "img-fluid" src={product.pictSource} alt="" />
-            <div class = "">
-              <DetailsThumb
-                images={product.pictSource}
-                tab={handleTab}
-                myRef={myRef}
-              />
-            </div>
-          </div>
-          
+        <div class="bg-image-container col-md-12">
+          <img class="bg-image" src={product.pictSource} />
         </div>
-        <div class="col-md-7 ">
-          <div className="box p-5 ">
-            <div className="row">
-              <h2 class="display-3 text-uppercase">{product.name}</h2>
-              <span class="bg-light display-6 text-uppercase p-3 m-3 px-4">${product.price}</span>
-            </div>
-            <div class="px-1">
-              <p class= "h4">{product.description}</p>
-              <div className="colors">
-                {colors.map((color) => (
-                  <button style={{ background: color }} key={color}></button>
-                ))}
+        <div class = "bg-white col-md-10 pt-4 row">
+          <div class="col-md-4">
+            <div className="col-md-12">
+              <img class = "img-fluid" src={product.pictSource} alt="" />
+              <div class = "">
+                <DetailsThumb
+                  images={product.pictSource}
+                  tab={handleTab}
+                  myRef={myRef}
+                />
               </div>
-
-              <button class="btn btn-primary btn-lg btn-block p-3 px-5 cart font-weight-bold"> ADD TO CART </button>
             </div>
-          
+            
+          </div>
+          <div class="col-md-8 pt-5">
+            <div className="box">
+              <div className="row">
+                <h2 class="display-3 text-uppercase product-name">{product.name}</h2>
+                <span class="price-tag bg-light display-6 text-uppercase mx-3 p-3 px-4">${product.price}</span>
+              </div>
+              <div class="px-1">
+                <p class= "h4">{product.description}</p>
+                <div className="colors">
+                  {colors.map((color) => (
+                    <button style={{ background: color }} key={color}></button>
+                  ))}
+                </div>
+
+                <button class="btn btn-primary btn-lg btn-block p-3 px-5 font-weight-bold cart "> ADD TO CART </button>
+              </div>
+            
+            </div>
           </div>
         </div>
+
 
         <div class = "col-md-10 float-left">
           <div class="col-md-8 pt-5 mt-5">
