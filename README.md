@@ -8,11 +8,11 @@
 As this is an E-Commerce Website, we decided to create it based on Shopee - a leading e-commerce platform in Southeast Asia and Taiwan.
 
 ## 2.2 Platform and Tools Review
-GitHub
-Bootstrap
-ReactJS
-ExpressJS
-NodeJS
+- GitHub
+- Bootstrap
+- ReactJS
+- ExpressJS
+- NodeJS
 
 
 # CHAPTER 3: SYSTEM DESIGN
