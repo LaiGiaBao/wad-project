@@ -95,11 +95,11 @@ function Product() {
     //   ))}
     // </div>
     // </div>
-    <div className="container-fluid h-custom">
-       <div class="row d-flex justify-content-center align-items-center h-100 py-5 my-5">
-        <div class="bg-image-container col-md-12">
+    <div className="container-fluid h-custom ">
+        <div class="bg-image-container row d-flex justify-content-center align-items-center">
           <img class="bg-image" src={product.pictSource} />
         </div>
+       <div class="row d-flex justify-content-center align-items-center h-100 py-1 my-1">
         <div class = "bg-white col-md-10 pt-4 row">
           <div class="col-md-4">
             <div className="col-md-12">
@@ -121,21 +121,19 @@ function Product() {
                 <span class="price-tag bg-light display-6 text-uppercase mx-3 p-3 px-4">${product.price}</span>
               </div>
               <div class="px-1">
-                <p class= "h4">{product.description}</p>
                 <div className="colors">
                   {colors.map((color) => (
                     <button style={{ background: color }} key={color}></button>
                   ))}
                 </div>
-
                 <button class="btn btn-primary btn-lg btn-block p-3 px-5 font-weight-bold cart "> ADD TO CART </button>
+
+                <p class= "h4">{product.description}</p>
               </div>
             
             </div>
           </div>
         </div>
-
-
         <div class = "col-md-10 float-left">
           <div class="col-md-8 pt-5 mt-5">
             <h2 class= "text-center">COMMENT SECTION</h2>

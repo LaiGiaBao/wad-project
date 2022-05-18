@@ -25,16 +25,20 @@
   cursor: pointer;
 }
 .card_img {
-  width: 90%;
-  height: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
+  width: 100%;
+  height: 80%;
 }
 .card_img img {
+  border-radius: 0.5rem;
   width: 100%;
   height: 100%;
+  min-height: 12rem;
+  min-width: 12rem;
   object-fit: cover;
+}
+
+.card_title {
+  margin-top: 2rem;
 }
 
 .card_title,
@@ -44,6 +48,7 @@
   text-align: center;
   transition: 0.5s;
   animation-delay: 0.2s;
+  
 }
 
 .card_size,
@@ -54,7 +59,7 @@
 
 .card_size span {
   padding: 2px 5px;
-  background: yellowgreen;
+  background: rgb(236, 255, 218);
   border-radius: 5px;
   margin: 0px 2px;
   cursor: pointer;
@@ -83,7 +88,7 @@
 }
 
 .card_action button {
-  background: aqua;
+  background: rgb(206, 237, 237);
   border: none;
   outline: none;
   padding: 10px 20px;
@@ -101,10 +106,12 @@
 }
 
 .card:hover .card_img{
+  height:40%;
+  width: 100%;
   transform:  translateY(-97px) rotate(-20deg);
   opacity: 1;
   transition: 0.5s;
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
 }
 
 .card:not(:hover) .card_img{
@@ -144,6 +151,20 @@
   transition: 0.5s;
   transition-delay: 0.3s;
 }
+
+
+.card:not(:hover) .card_title,
+.card:not(:hover) .card_price,
+.card:not(:hover) .card_size,
+.card:not(:hover) .card_color,
+.card:not(:hover) .card_action,
+.card:not(:hover) .card_img {
+  transition: 0.4s;
+  transition-delay: 0.1s;
+
+  pointer-events: none;
+}
+
 
 .card:hover .card_size {
   margin-top: -30px;
