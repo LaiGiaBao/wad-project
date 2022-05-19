@@ -20,9 +20,10 @@ function App() {
     username: "",
     fullname: "",
     id: 0,
-    // cartId: 0,
+    cartId: 0,
     status: false,
   });
+  const [isLoading,setIsLoading] = useState(false)
   const [searchText, setSearchText] = useState("");
   const [cartDetails, setCartDetails] = useState([]);
   useEffect(() => {
@@ -42,6 +43,7 @@ function App() {
             id: response.data.id,
             fullname: response.data.fullname,
             status: true,
+            cartId: response.data.cartId,
           });
         }
       });
@@ -58,10 +60,13 @@ function App() {
           setCartDetails,
           cartId,
           setCartId,
+          isLoading,
+          setIsLoading
         }}
       >
         <Router>
-          <NavBarComp />
+          
+          {isLoading ? <div>Loading...</div> : <NavBarComp />}
           <Routes>
             <Route path="/" exact element={<Home />}></Route>
             <Route path="/addproduct" exact element={<AddNewProduct />}></Route>

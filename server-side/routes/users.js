@@ -14,8 +14,18 @@ router.post("/", async (req, res) => {
       fullname: fullname,
       email: email,
     });
-    res.json("SUCCESS");
-  });
+  })
+    setTimeout(
+      async () => {
+      const user = await sequelize.query("SELECT * FROM `Users` WHERE Users.username = :username",{replacements:{username:username},type:QueryTypes.SELECT})
+      Carts.create({
+        UserId: user[0].id,
+        totalPrice:0,
+      })
+      res.json(user)
+    }
+      ,500)
+  
 });
 
 router.post("/login", async (req, res) => {
