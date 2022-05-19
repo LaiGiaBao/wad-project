@@ -18,9 +18,14 @@ function Register() {
     email: Yup.string().email(),
   });
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-      navigate("/");
+    axios.post("http://localhost:3001/auth", data).then((response) => {
+      if(response.data.error) {
+        alert(response.data.error)
+      }
+      else {
+        navigate("/");
+      }
+      
     });
   };
   return (

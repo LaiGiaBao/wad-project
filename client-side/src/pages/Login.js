@@ -12,52 +12,51 @@ function Login() {
   const { setAuthState, authState, setCartId, setIsLoading } = useContext(AuthContext);
   const login = () => {
     setIsLoading(true);
-    setTimeout(() => {
-      const data = {
-        username: username,
-        password: password,
-      };
-      axios.post("http://localhost:3001/auth/login", data).then((response) => {
-        if (response.data.error) {
-          alert(response.data.error);
-        } else {
-          console.log(response.data);
-          let { data: user } = response;
-          localStorage.setItem("accessToken", user.token);
-          if (user.cartStatus == true) {
-            user.cartId++;
-            axios
-              .post(
-                "http://localhost:3001/carts",
-                {
-                  UserId: user.id,
-                  totalPrice: 0,
+    const data = {
+      username: username,
+      password: password,
+    };
+    axios.post("http://localhost:3001/auth/login", data).then((response) => {
+      if (response.data.error) {
+        alert(response.data.error);
+      } else {
+        console.log(response.data);
+        let { data: user } = response;
+        localStorage.setItem("accessToken", user.token);
+        if (user.cartStatus == true) {
+          axios
+            .post(
+              "http://localhost:3001/carts",
+              {
+                UserId: user.id,
+                totalPrice: 0,
+              },
+              {
+                headers: {
+                  accessToken: localStorage.getItem("accessToken"),
                 },
-                {
-                  headers: {
-                    accessToken: localStorage.getItem("accessToken"),
-                  },
-                }
-              )
-              .then((response) => {
-                console.log(
-                  "Create new Cart because the previous cart is completed"
-                );
-              });
-          }
-          setAuthState({
-            ...authState,
-            username: user.username,
-            id: user.id,
-            fullname: user.fullname,
-            cartId: user.cartId,
-          });
-          setCartId(user.cartId);
-          setIsLoading(false)
-          navigate("/");
+              }
+            )
+            .then((response) => {
+              axios.get(`http://localhost:3001/carts/byUserId/${user.id}`).then((response1) => {
+                setAuthState({...authState, cartId: response1.data[-1].id, cartStatus: false})
+              })
+              console.log(
+                "Create new Cart because the previous cart is completed"
+              );
+            });
         }
-      });
-    },3000)
+        setAuthState({
+          ...authState,
+          username: user.username,
+          id: user.id,
+          fullname: user.fullname,
+          cartId: user.cartId,
+        });
+        setIsLoading(false)
+        navigate("/");
+      }
+    });
     
   };
   return (

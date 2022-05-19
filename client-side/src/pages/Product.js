@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 import "../styles/product-detail.css";
 import DetailsThumb from "../Components/DetailsThumb";
 import Colors from "../Components/Colors";
+import { AuthContext } from "../helpers/AuthContext";
 function Product() {
   let { id } = useParams();
   const [product, setProduct] = useState({});
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [colors, setColors] = useState([]);
+  const {authState} = useContext(AuthContext)
   let myRef = React.createRef();
   let handleTab = (index) => {
     this.setState({ index });
@@ -31,6 +33,19 @@ function Product() {
       setComments(response.data);
     });
   }, []);
+  const deleteComment = (id) => {
+    axios
+      .delete(`http://localhost:3001/comments/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then(() => {
+        setComments(
+          comments.filter((comment) => {
+            return comment.id != id;
+          })
+        );
+      });
+  };
   const addComment = () => {
     axios
       .post(
@@ -164,6 +179,15 @@ function Product() {
                   <div className="comment col-md-11 h5" key={key}>
                     <label>{comment.username}</label>
                     <div className="comment-body h5">{comment.commentBody}</div>
+                    {authState.username === comment.username && (
+                  <button
+                    onClick={() => {
+                      deleteComment(comment.id);
+                    }}
+                  >
+                    X
+                  </button>
+                )}
                   </div>
                 </div>
               ))}

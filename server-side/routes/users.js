@@ -7,6 +7,11 @@ const { validateToken } = require("../middlewares/AuthMiddleware");
 const { QueryTypes } = require("@sequelize/core");
 router.post("/", async (req, res) => {
   const { username, password, fullname, email } = req.body;
+  const checkUser = await Users.findOne({where: {username: username}})
+  if (!checkUser) {
+    res.json({error: "User Existed"})
+    return;
+  }
   bcrypt.hash(password, 10).then((hash) => {
     Users.create({
       username: username,

@@ -20,7 +20,6 @@ import { AuthContext } from "../helpers/AuthContext";
 const NavBarComp = () => {
   const { searchText, setSearchText } = useContext(AuthContext);
   const { authState, setAuthState } = useContext(AuthContext);
-  const { cartId, setCartId } = useContext(AuthContext);
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
   const logOut = () => {

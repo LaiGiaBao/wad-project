@@ -21,6 +21,7 @@ function App() {
     fullname: "",
     id: 0,
     cartId: 0,
+    cartStatus: false,
     status: false,
   });
   const [isLoading,setIsLoading] = useState(false)
@@ -34,6 +35,7 @@ function App() {
         },
       })
       .then((response) => {
+        console.log(response.data)
         if (response.data.error) {
           setAuthState({ ...authState, status: false });
         } else {
@@ -65,8 +67,8 @@ function App() {
         }}
       >
         <Router>
-          
-          {isLoading ? <div>Loading...</div> : <NavBarComp />}
+          {isLoading && <div>Loading...</div>}
+          <NavBarComp />
           <Routes>
             <Route path="/" exact element={<Home />}></Route>
             <Route path="/addproduct" exact element={<AddNewProduct />}></Route>

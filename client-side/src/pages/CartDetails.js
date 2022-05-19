@@ -6,7 +6,7 @@ import CurrencyFormat from "react-currency-format";
 function CartDetails() {
   let { id } = useParams();
   const [cartDetails, setCartDetails] = useState([]);
-  const { authState } = useContext(AuthContext);
+  const { authState, setAuthState } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -29,8 +29,10 @@ function CartDetails() {
       {
         headers: { accessToken: localStorage.getItem("accessToken") },
       }
-    );
-    alert("BUY SUCCESSFUL");
+    ).then((response) => {
+      setAuthState({...authState, cartStatus: true})
+      alert("BUY SUCCESSFUL");
+    })
   };
   return (
     <div>
