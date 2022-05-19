@@ -94,7 +94,7 @@ const NavBarComp = () => {
           ) : (
             <Nav>
               <Nav.Link
-                href={`/cart-details/${cartId}`}
+                href={`/cart-details/${authState.cartId}`}
                 style={{ fontSize: "18px", marginRight: "8px" }}
               >
                 <FontAwesomeIcon
