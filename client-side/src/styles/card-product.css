@@ -127,7 +127,7 @@
     opacity: 100;
     transition: 0.5s;
     transition-delay: 0.2s;
-    padding-top: 30px;
+    margin-top: 30px;
 }
 .card:hover .card_color{
     visibility: visible;
