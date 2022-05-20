@@ -7,6 +7,7 @@ function CartDetails() {
   let { id } = useParams();
   const [cartDetails, setCartDetails] = useState([]);
   const { authState, setAuthState } = useContext(AuthContext);
+  let totalPrice =0;
   const navigate = useNavigate();
   useEffect(() => {
     axios
@@ -18,7 +19,7 @@ function CartDetails() {
   }, []);
 
   console.log(cartDetails);
-  let totalPrice = 0;
+  
   const updateDetailCart = (totalPrice) => {
     axios.put(
       `http://localhost:3001/carts/totalPrice`,
@@ -34,6 +35,11 @@ function CartDetails() {
       alert("BUY SUCCESSFUL");
     })
   };
+  const deleteProduct = (id) => {
+    setCartDetails(
+      cartDetails.filter((detail) => {return detail.id != id})
+    )
+  }
   return (
     <div>
       <h2>Products in Cart</h2>
@@ -47,7 +53,7 @@ function CartDetails() {
         </thead>
         <tbody>
           {cartDetails.map((details, index) => {
-            totalPrice += details.Price;
+            totalPrice += details.Price
             return (
               <tr key={index}>
                 <td>{details.name}</td>
@@ -60,6 +66,7 @@ function CartDetails() {
                     suffix={"đ"}
                   />
                 </td>
+                {(!authState.cartStatus &&authState.cartId==id)&&(<td><button onClick={() => {deleteProduct(details.id)}}>Discard</button></td>)}
               </tr>
             );
           })}

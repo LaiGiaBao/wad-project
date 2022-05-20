@@ -15,7 +15,6 @@ import Profile from "./pages/Profile";
 import CartDetails from "./pages/CartDetails";
 
 function App() {
-  const [cartId, setCartId] = useState(0);
   const [authState, setAuthState] = useState({
     username: "",
     fullname: "",
@@ -24,10 +23,11 @@ function App() {
     cartStatus: false,
     status: false,
   });
-  const [isLoading,setIsLoading] = useState(false)
+  const [isLoading,setIsLoading] = useState(true)
   const [searchText, setSearchText] = useState("");
   const [cartDetails, setCartDetails] = useState([]);
   useEffect(() => {
+    setIsLoading(true)
     axios
       .get("http://localhost:3001/auth/auth", {
         headers: {
@@ -35,9 +35,9 @@ function App() {
         },
       })
       .then((response) => {
-        console.log(response.data)
         if (response.data.error) {
           setAuthState({ ...authState, status: false });
+          setIsLoading(false)
         } else {
           setAuthState({
             ...authState,
@@ -47,9 +47,13 @@ function App() {
             status: true,
             cartId: response.data.cartId,
           });
+          setIsLoading(false)
         }
       });
   }, []);
+  useEffect(() => {
+    console.log("Component Rerendered");
+  },[isLoading])
   return (
     <div className="App">
       <AuthContext.Provider
@@ -60,15 +64,13 @@ function App() {
           setSearchText,
           cartDetails,
           setCartDetails,
-          cartId,
-          setCartId,
           isLoading,
           setIsLoading
         }}
       >
         <Router>
-          {isLoading && <div>Loading...</div>}
-          <NavBarComp />
+          {isLoading ? <div>Loading...</div>: <NavBarComp />}
+          
           <Routes>
             <Route path="/" exact element={<Home />}></Route>
             <Route path="/addproduct" exact element={<AddNewProduct />}></Route>

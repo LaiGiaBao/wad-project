@@ -21,5 +21,12 @@ router.post("/", async (req, res) => {
   await CartDetails.create(cart);
   res.json(cart);
 });
-
+router.delete("/:productId", async (req, res) => {
+  const productId = req.params.productId
+  await CartDetails.destroy({
+    where: {
+      id: productId
+    }
+  })
+})
 module.exports = router;

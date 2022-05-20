@@ -20,8 +20,12 @@ import { AuthContext } from "../helpers/AuthContext";
 const NavBarComp = () => {
   const { searchText, setSearchText } = useContext(AuthContext);
   const { authState, setAuthState } = useContext(AuthContext);
+  const { isLoading, setIsLoading } = useContext(AuthContext);
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
+  useEffect(() => {
+    console.log("Component rerendering")
+  },[authState])
   const logOut = () => {
     localStorage.removeItem("accessToken");
     setAuthState({
