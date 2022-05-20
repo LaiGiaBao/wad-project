@@ -105,32 +105,11 @@
   transform: scale(0.9);
 }
 
-.card:hover .card_img{
-  height:40%;
-  width: 100%;
-  transform:  translateY(-97px) rotate(-20deg);
-  opacity: 1;
-  transition: 0.5s;
-  transition-delay: 0.1s;
+.card:hover{
+    transform: scale(1.1);
+    transition-delay: 0.1s;
 }
 
-.card:not(:hover) .card_img{
-  opacity: 1;
-  transition: 0.5s;
-  transition-delay: 0.1s;
-}
-
-.card:hover .card_title{
-  transition: 0.5s;
-  transition-delay: 0.3s;
-  transform: translate(1px,-50px);
-}
-
-.card:hover .card_price{
-  transition: 0.5s;
-  transition-delay: 0.3s;
-  transform: translate(1px,-49px);
-}
 
 .card_size {
   margin-top: 150px;
@@ -143,15 +122,28 @@
   opacity: 0;
 }
 
-.card:hover .card_size,
-.card:hover .card_color,
-.card:hover .card_action {
-  visibility: visible;
-  opacity: 100;
-  transition: 0.5s;
-  transition-delay: 0.3s;
+.card:hover .card_size{
+    visibility: visible;
+    opacity: 100;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+    margin-top: 30px;
+}
+.card:hover .card_color{
+    visibility: visible;
+    opacity: 100;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+    margin-top: 5px;
 }
 
+.card:hover .card_action{
+    visibility: visible;
+    opacity: 100;
+    transition: 0.5s;
+    transition-delay: 0.2s;
+    margin-top: 2px;
+}
 
 .card:not(:hover) .card_title,
 .card:not(:hover) .card_price,
