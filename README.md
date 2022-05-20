@@ -13,6 +13,7 @@ As this is an E-Commerce Website, we decided to create it based on Shopee - a le
 - ReactJS
 - ExpressJS
 - NodeJS
+- MySQL (XAMPP)
 
 
 # CHAPTER 3: SYSTEM DESIGN
