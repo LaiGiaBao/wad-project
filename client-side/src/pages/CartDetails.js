@@ -86,7 +86,7 @@ function CartDetails() {
           </tr>
         </tfoot>
       </table>
-      <button onClick={() => updateDetailCart(totalPrice)}>Confirm</button>
+      {(!authState.cartStatus &&authState.cartId==id) && <button onClick={() => updateDetailCart(totalPrice)}>Confirm</button>}
     </div>
   );
 }

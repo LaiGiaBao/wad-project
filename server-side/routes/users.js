@@ -8,7 +8,7 @@ const { QueryTypes } = require("@sequelize/core");
 router.post("/", async (req, res) => {
   const { username, password, fullname, email } = req.body;
   const checkUser = await Users.findOne({where: {username: username}})
-  if (!checkUser) {
+  if (checkUser) {
     res.json({error: "User Existed"})
     return;
   }
