@@ -8,6 +8,7 @@
   margin-top: 20px;
   margin-bottom: 100px;
   display: inline-flex;
+  transition: transform 100ms ease-in-out;
 }
 
 .card_like,
