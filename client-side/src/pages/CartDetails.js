@@ -41,14 +41,14 @@ function CartDetails() {
     )
   }
   return (
-    <div>
-      <h2>Products in Cart</h2>
-      <table>
+    <div class="container-fluid h-custom w-75 mt-5">
+      <h2 class="text-center display-2 mb-5">Products in Cart</h2>
+      <table class="table table-hover">
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
+            <th class="h3">Product</th>
+            <th class="h3">Quantity</th>
+            <th class="h3">Price</th>
           </tr>
         </thead>
         <tbody>
@@ -56,37 +56,60 @@ function CartDetails() {
             totalPrice += details.Price
             return (
               <tr key={index}>
-                <td>{details.name}</td>
-                <td>{details.Quantity}</td>
-                <td>
-                  <CurrencyFormat
-                    value={details.Price}
-                    displayType={"text"}
-                    thousandSeparator={true}
-                    suffix={"đ"}
-                  />
+                <td class = "rounded py-3">
+                  <div class="row">
+                    <div class="col-md-4 ">
+                      <img class="rounded" style={{width: "100%", height: "100px", objectFit: "cover" }} src = {details.pictSource} alt=""></img>
+                    </div>
+                    <p class="col-md-8 h2 pt-4 mt-1"> {details.name}</p>
+                  </div>        
                 </td>
-                {(!authState.cartStatus &&authState.cartId==id)&&(<td><button onClick={() => {deleteProduct(details.id)}}>Discard</button></td>)}
+                <td>
+                  <p class="h2 pt-1 mt-4">{details.Quantity}</p>
+                </td>
+                <td>
+                  <div class="pt-1 mt-4">
+                    <CurrencyFormat
+                      value={details.Price}
+                      class= "h2"
+                      displayType={"text"}
+                      thousandSeparator={true}
+                      suffix={"đ"}
+                    />
+                  </div>
+                </td>
+                {(!authState.cartStatus &&authState.cartId==id)&&
+                  (<td><button
+                          class="btn btn-danger btn-lg mt-4 " 
+                          onClick={() => {deleteProduct(details.id)}}>X</button></td>)}
               </tr>
             );
           })}
         </tbody>
         <tfoot>
           <tr>
-            <td>Total Price:</td>
+            <td class="h3">Total Price:</td>
             <td></td>
             <td>
               <CurrencyFormat
                 value={totalPrice}
+                class="h2"
                 displayType={"text"}
                 thousandSeparator={true}
                 suffix={"đ"}
               />
             </td>
+            <td></td>
           </tr>
         </tfoot>
       </table>
-      {(!authState.cartStatus &&authState.cartId==id) && <button onClick={() => updateDetailCart(totalPrice)}>Confirm</button>}
+      <div class="d-flex">
+        {(!authState.cartStatus &&authState.cartId==id) && 
+          <button
+            class="btn btn-primary btn-lg btn-block px-5 mx-auto mt-5 w-50" 
+            onClick={() => updateDetailCart(totalPrice)}>Confirm</button>}
+      </div>
+     
     </div>
   );
 }
