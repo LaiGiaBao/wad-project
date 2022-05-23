@@ -20,4 +20,20 @@ router.get("/byId/:id", async (req, res) => {
   const product = await Products.findByPk(id);
   res.json(product);
 });
+router.delete("/:id", async (req, res) => {
+  const id =req.params.id;
+  await Products.destroy({
+    where: {
+      id: id,
+    }
+  })
+})
+router.put("/change-amount/:id", async (req,res) => {
+  const { quantity,id } = req.body;
+  await Products.update(
+    { quantity: quantity },
+    { where: { id: id } }
+  );
+  res.json("Updated Quantity");
+})
 module.exports = router;

@@ -30,7 +30,17 @@ function CartDetails() {
       {
         headers: { accessToken: localStorage.getItem("accessToken") },
       }
-    ).then((response) => {
+    ).then(() => {
+      cartDetails.map(details => {
+        axios.get(`http://localhost:3001/products/byId/${details.id}`).then((response) => {
+          const remain = response.data.quantity - details.Quantity;
+          if (remain <0) {
+            alert("this product is out of stock");
+            return;
+          }
+          axios.put(`http://localhost:3001/products/change-amount/${details.id}`,{quantity:remain,id:details.id})
+        })
+      })
       setAuthState({...authState, cartStatus: true})
       alert("BUY SUCCESSFUL");
     })

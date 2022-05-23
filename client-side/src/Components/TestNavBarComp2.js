@@ -113,9 +113,9 @@ const TestNavBarComp2 = () => {
                 {authState.username===admin &&<NavDropdown.Item href="/addproduct">
                   Add Product
                 </NavDropdown.Item>}
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+                {authState.username===admin &&<NavDropdown.Item href="/product-manage">
+                  Manage Product
+                </NavDropdown.Item>}
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   onClick={() => {

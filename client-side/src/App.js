@@ -16,6 +16,7 @@ import CartDetails from "./pages/CartDetails";
 import TestNavBarComp from "./Components/TestNavBarComp";
 import TestNavBarComp2 from "./Components/TestNavBarComp2";
 import SpecifiedCategory from "./pages/SpecifiedCategory";
+import ProductManagement from "./pages/ProductManagement";
 function App() {
   const [authState, setAuthState] = useState({
     username: "",
@@ -86,6 +87,7 @@ function App() {
               exact
               element={<CartDetails />}
             ></Route>
+            <Route path="/product-manage" exact element={<ProductManagement/>}></Route>
           </Routes>
         </Router>
       </AuthContext.Provider>

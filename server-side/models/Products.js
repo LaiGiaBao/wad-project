@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    quantity: {
+      type: DataTypes.BIGINT,
+      allowNull: true,
+    }
   });
   Products.associate = (models) => {
     Products.hasMany(models.Comments, {

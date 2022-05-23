@@ -35,6 +35,7 @@ function AddNewProduct() {
     sizes: Yup.string(),
     pictSource: Yup.string().url(),
     description: Yup.string(),
+    quantity: Yup.number().required().positive().integer(),
   });
   
   const onSubmit = (data) => {
@@ -54,44 +55,47 @@ function AddNewProduct() {
 
   return (
     <div className="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100 py-5">
-        <div class="col-md-5 p-5">
+      <div className="row d-flex justify-content-center align-items-center h-100 py-5">
+        <div className="col-md-5 p-5">
           <Formik
           initialValues={initialValues}
           onSubmit={onSubmit}
           validation={validationSchema}
           >
             <Form onChange = {(event) => OnFormChange(event.target)}>
-              <div class=""> 
+              <div className=""> 
                 <label htmlFor="name">Name:</label>
                 <ErrorMessage name="name" component="span" />
-                <Field class="form-control form-control-lg" placeholder="Product Name" id="inputCreatePost" name="name"></Field>
+                <Field className="form-control form-control-lg" placeholder="Product Name" id="inputCreatePost" name="name"></Field>
 
                 <label htmlFor="description">Description:</label>
                 <ErrorMessage name="description" component="span" />
-                <Field class="form-control form-control-lg" placeholder="Description" id="inputCreatePost" name="description" as="textarea"></Field>
+                <Field className="form-control form-control-lg" placeholder="Description" id="inputCreatePost" name="description" as="textarea"></Field>
               </div>
 
-              <div class="col-md-4 py-4">
+              <div className="col-md-4 py-4">
                 <label>Price:</label>
                 <ErrorMessage name="price" component="span" />
-                <Field class="form-control form-control-lg" placeholder="Price" id="inputCreatePost" name="price"></Field>
+                <Field className="form-control form-control-lg" placeholder="Price" id="inputCreatePost" name="price"></Field>
+                <label>Quantity:</label>
+                <ErrorMessage name="quantity" component="span" />
+                <Field className="form-control form-control-lg" placeholder="Quantity" id="inputCreatePost" name="quantity"></Field>
               </div>
               
               <label htmlFor="pictSource">PictSource:</label>
               <ErrorMessage name="pictSource" component="span" />
               <Field 
-                class="form-control form-control-lg" 
+                className="form-control form-control-lg" 
                 placeholder="Picture Source" 
                 id="inputCreatePost" 
                 name="pictSource"
                 ></Field>
 
-              <div class = "row py-3 pb-5">
-                <div class="col-md-4">
+              <div className = "row py-3 pb-5">
+                <div className="col-md-4">
                   <label>Category:</label>
                   <ErrorMessage name="category" component="span" />
-                  <Field class="form-control form-control-lg" id="inputCreatePost" name="category" component="select">
+                  <Field className="form-control form-control-lg" id="inputCreatePost" name="category" component="select">
                     <option value="" label="Select a category"></option>
                     {categories.map((category) => (
                       <option
@@ -103,30 +107,30 @@ function AddNewProduct() {
                   </Field>
                 </div>
 
-                <div class="col-md-4">
+                <div className="col-md-4">
                   <label htmlFor="size">Sizes:</label>
                   <ErrorMessage name="sizes" component="span" />
-                  <Field class="form-control form-control-lg" placeholder = "Sizes" id="inputCreatePost" name="sizes"></Field>
+                  <Field className="form-control form-control-lg" placeholder = "Sizes" id="inputCreatePost" name="sizes"></Field>
                 </div>
 
-                <div class="col-md-4">
+                <div className="col-md-4">
                   <label htmlFor="colors">Colors:</label>
                   <ErrorMessage name="colors" component="span" />
-                  <Field class="form-control form-control-lg" placeholder = "Color" id="inputCreatePost" name="colors"></Field>
+                  <Field className="form-control form-control-lg" placeholder = "Color" id="inputCreatePost" name="colors"></Field>
                 </div>
               </div>
 
-              <div class="col-md-5 mx-auto">
-              <button class="btn btn-primary btn-lg btn-block p-3 px-5" type="submit">CREATE PRODUCT</button>
+              <div className="col-md-5 mx-auto">
+              <button className="btn btn-primary btn-lg btn-block p-3 px-5" type="submit">CREATE PRODUCT</button>
               </div>
               
             </Form>
           </Formik>
         </div>
-        <div class="col-md-5">
-          <h2 class="text-center"> Product preview </h2>
-          <div class="col-md-12">
-            <img class="img-fluid mx-auto d-block w-75" src = {productImg} alt=""></img>
+        <div className="col-md-5">
+          <h2 className="text-center"> Product preview </h2>
+          <div className="col-md-12">
+            <img className="img-fluid mx-auto d-block w-75" src = {productImg} alt=""></img>
           </div>
           
         </div>

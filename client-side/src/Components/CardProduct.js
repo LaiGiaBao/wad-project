@@ -59,7 +59,7 @@ const CardProduct = ({ product }) => {
         ))}
       </div>
       <div className="card_action">
-        <input type="number" class="product_count" placeholder="1" min="1" max="10"
+        <input type="number" className="product_count" placeholder="1" min="1" max="10"
                 onChange={(event) => SetQuantity(event.target.value)}></input>
         {authState.status && (
           <button className="Buy" onClick={buyButton}  disabled={isBought}>
