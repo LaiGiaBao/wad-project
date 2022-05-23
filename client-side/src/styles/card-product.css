@@ -108,7 +108,7 @@
 }
 
 .card:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition-delay: 0.1s;
     transition: transform 100ms ease-in-out;
     box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;

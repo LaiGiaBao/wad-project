@@ -8,6 +8,7 @@ const CardProduct = ({ product }) => {
   const listOfColors = colors.split(",");
   const listOfSizes = sizes.split(",");
   const { authState, cartDetails, setCartDetails } = useContext(AuthContext);
+  const [bought, setBought] = useState(false)
   let navigate = useNavigate();
   const buyButton = () => {
     axios

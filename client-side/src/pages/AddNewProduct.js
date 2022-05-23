@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import axios from "axios";
 import * as Yup from "yup";
 import "../styles/add-product.css";
-
+import { AuthContext } from "../helpers/AuthContext";
+import { useNavigate } from "react-router-dom";
 function AddNewProduct() {
   const [categories, setCategories] = useState([]);
   const [productImg, setProductImg] = useState("");
-
+  const navigate = useNavigate();
+  const {authState,admin} = useContext(AuthContext)
+  useEffect(() => {
+  
+  },[])
   useEffect(() => {
     axios.get("http://localhost:3001/categories").then((response) => {
       setCategories(response.data);
@@ -36,6 +41,7 @@ function AddNewProduct() {
     axios.post("http://localhost:3001/products", data).then((response) => {
       console.log("Product has been uploaded");
       console.log(data);
+      alert("Product added")
     });
   };
 

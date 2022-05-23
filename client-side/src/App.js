@@ -13,7 +13,9 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import CartDetails from "./pages/CartDetails";
-
+import TestNavBarComp from "./Components/TestNavBarComp";
+import TestNavBarComp2 from "./Components/TestNavBarComp2";
+import SpecifiedCategory from "./pages/SpecifiedCategory";
 function App() {
   const [authState, setAuthState] = useState({
     username: "",
@@ -23,6 +25,7 @@ function App() {
     cartStatus: false,
     status: false,
   });
+  const [admin, setAdmin] = useState("bindat1311");
   const [isLoading,setIsLoading] = useState(true)
   const [searchText, setSearchText] = useState("");
   const [cartDetails, setCartDetails] = useState([]);
@@ -37,7 +40,6 @@ function App() {
       .then((response) => {
         if (response.data.error) {
           setAuthState({ ...authState, status: false });
-          setIsLoading(false)
         } else {
           setAuthState({
             ...authState,
@@ -46,14 +48,12 @@ function App() {
             fullname: response.data.fullname,
             status: true,
             cartId: response.data.cartId,
-          });
-          setIsLoading(false)
+          });      
         }
+        setIsLoading(false)
       });
   }, []);
-  useEffect(() => {
-    console.log("Component Rerendered");
-  },[isLoading])
+  useEffect(() => {},[authState])
   return (
     <div className="App">
       <AuthContext.Provider
@@ -65,12 +65,14 @@ function App() {
           cartDetails,
           setCartDetails,
           isLoading,
-          setIsLoading
+          setIsLoading,
+          admin, 
+          setAdmin
         }}
       >
         <Router>
-          {isLoading ? <div>Loading...</div>: <NavBarComp />}
-          
+          {isLoading && <div>Loading...</div>}
+          {authState.status ? <TestNavBarComp2/> : <TestNavBarComp/>}    
           <Routes>
             <Route path="/" exact element={<Home />}></Route>
             <Route path="/addproduct" exact element={<AddNewProduct />}></Route>
@@ -78,6 +80,7 @@ function App() {
             <Route path="/register" exact element={<Register />}></Route>
             <Route path="/login" exact element={<Login />}></Route>
             <Route path="/profile/:id" exact element={<Profile />}></Route>
+            <Route path="/product/byCategory/:id" exact element={<SpecifiedCategory/>}></Route>
             <Route
               path="/cart-details/:id"
               exact

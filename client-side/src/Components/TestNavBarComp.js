@@ -17,26 +17,12 @@ import {
 import "../styles/navbar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
-const NavBarComp = () => {
+const TestNavBarComp = () => {
   const { searchText, setSearchText } = useContext(AuthContext);
   const { authState, setAuthState } = useContext(AuthContext);
-  const { admin, setAdmin } = useContext(AuthContext);
+  const { isLoading, setIsLoading } = useContext(AuthContext);
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("Component rerendering")
-  },[authState])
-  const logOut = () => {
-    localStorage.removeItem("accessToken");
-    setAuthState({
-      ...authState,
-      username: "",
-      id: 0,
-      fullname: "",
-      status: false,
-    });
-    navigate("/");
-  };
 
   return (
     <Navbar className="navbar" variant={"dark"} expand="lg">
@@ -81,7 +67,7 @@ const NavBarComp = () => {
               </Button>
             </Form>
           </Nav>
-          {!authState.status ? (
+        
             <Nav>
               <Nav.Item>
                 <Nav.Link href="/register" className="">
@@ -94,57 +80,10 @@ const NavBarComp = () => {
                 </Nav.Link>
               </Nav.Item>
             </Nav>
-          ) : (
-            <Nav>
-              <Nav.Link
-                href={`/cart-details/${authState.cartId}`}
-                style={{ fontSize: "18px", marginRight: "8px" }}
-              >
-                <FontAwesomeIcon
-                  icon={solid("cart-shopping")}
-                ></FontAwesomeIcon>
-              </Nav.Link>
-              <NavDropdown
-                title={
-                  <span>
-                    <FontAwesomeIcon icon={solid("user")}></FontAwesomeIcon>
-                    &nbsp; Hello, {authState.fullname.split(" ")[0]}
-                  </span>
-                }
-                id="basic-nav-dropdown"
-                style={{
-                  color: "white",
-                  fontSize: "18px",
-                  marginRight: "12px",
-                }}
-              >
-                <NavDropdown.Item
-                  onClick={() => {
-                    navigate(`./profile/${authState.id}`);
-                  }}
-                >
-                  Profile
-                </NavDropdown.Item>
-                {authState.username==="bindat1311" &&<NavDropdown.Item href="/addproduct">
-                  Add Product
-                </NavDropdown.Item>}
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item
-                  onClick={() => {
-                    logOut();
-                  }}
-                >
-                  Log out
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          )}
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
-export default NavBarComp;
+export default TestNavBarComp;

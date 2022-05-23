@@ -4,6 +4,7 @@ import axios from "axios";
 import MainLayout from "../Components/MainLayout";
 import "../styles/card-product.css";
 import { AuthContext } from "../helpers/AuthContext";
+import { Link } from "react-router-dom";
 function Home() {
   const [listOfProducts, setListOfProducts] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -25,6 +26,7 @@ function Home() {
         return (
           <div key={category.id} className="product-list">
             <h2>{category.category}</h2>
+            <h3><Link to={`/product/byCategory/${category.id}`}>See More</Link></h3>
             <div className="items">
               {listOfFilteredProducts.map((product) => (
                 <CardProduct product={product} key={product.id} />

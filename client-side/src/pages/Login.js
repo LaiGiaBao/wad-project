@@ -12,51 +12,56 @@ function Login() {
   const { setAuthState, authState, setCartId, setIsLoading } = useContext(AuthContext);
   const login = () => {
     setIsLoading(true);
-    const data = {
-      username: username,
-      password: password,
-    };
-    axios.post("http://localhost:3001/auth/login", data).then((response) => {
-      if (response.data.error) {
-        alert(response.data.error);
-      } else {
-        console.log(response.data);
-        let { data: user } = response;
-        localStorage.setItem("accessToken", user.token);
-        if (user.cartStatus == true) {
-          axios
-            .post(
-              "http://localhost:3001/carts",
-              {
-                UserId: user.id,
-                totalPrice: 0,
-              },
-              {
-                headers: {
-                  accessToken: localStorage.getItem("accessToken"),
+    setTimeout(()=>{
+
+      const data = {
+        username: username,
+        password: password,
+      };
+      axios.post("http://localhost:3001/auth/login", data).then((response) => {
+        if (response.data.error) {
+          alert(response.data.error);
+        } else {
+          console.log(response.data);
+          let { data: user } = response;
+          localStorage.setItem("accessToken", user.token);
+          if (user.cartStatus == true) {
+            axios
+              .post(
+                "http://localhost:3001/carts",
+                {
+                  UserId: user.id,
+                  totalPrice: 0,
                 },
-              }
-            )
-            .then((response) => {
-              axios.get(`http://localhost:3001/carts/byUserId/${user.id}`).then((response1) => {
-                setAuthState({...authState, cartId: response1.data[-1].id, cartStatus: false})
-              })
-              console.log(
-                "Create new Cart because the previous cart is completed"
-              );
+                {
+                  headers: {
+                    accessToken: localStorage.getItem("accessToken"),
+                  },
+                }
+              )
+              .then((response) => {
+                axios.get(`http://localhost:3001/carts/byUserId/${user.id}`).then((response1) => {
+                  setAuthState({...authState, cartId: response1.data[-1].id, cartStatus: false})
+                })
+                console.log(
+                  "Create new Cart because the previous cart is completed"
+                );
+              });
+          }
+          else{
+            setAuthState({
+              ...authState,
+              username: user.username,
+              id: user.id,
+              fullname: user.fullname,
+              cartId: user.cartId,
             });
+          }
+          setIsLoading(false)
+          navigate("/");
         }
-        setAuthState({
-          ...authState,
-          username: user.username,
-          id: user.id,
-          fullname: user.fullname,
-          cartId: user.cartId,
-        });
-        setIsLoading(false)
-        navigate("/");
-      }
-    });
+      });
+    },1000)
     
   };
   return (

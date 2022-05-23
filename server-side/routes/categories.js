@@ -10,4 +10,9 @@ router.post("/", async (req, res) => {
   await Categories.create(category);
   res.json(category);
 });
+router.get("/:id", async (req, res) => {
+  const id = req.params.id;
+  const category = await Categories.findByPk(id);
+  res.json(category);
+});
 module.exports = router;

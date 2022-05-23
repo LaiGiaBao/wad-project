@@ -17,15 +17,14 @@ import {
 import "../styles/navbar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
-const NavBarComp = () => {
+const TestNavBarComp2 = () => {
   const { searchText, setSearchText } = useContext(AuthContext);
   const { authState, setAuthState } = useContext(AuthContext);
-  const { admin, setAdmin } = useContext(AuthContext);
+  const { isLoading, setIsLoading } = useContext(AuthContext);
+  const {admin, setAdmin} = useContext(AuthContext)
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("Component rerendering")
-  },[authState])
+
   const logOut = () => {
     localStorage.removeItem("accessToken");
     setAuthState({
@@ -81,20 +80,6 @@ const NavBarComp = () => {
               </Button>
             </Form>
           </Nav>
-          {!authState.status ? (
-            <Nav>
-              <Nav.Item>
-                <Nav.Link href="/register" className="">
-                  Sign-Up
-                </Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link href="/login" className="">
-                  Login
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          ) : (
             <Nav>
               <Nav.Link
                 href={`/cart-details/${authState.cartId}`}
@@ -125,7 +110,7 @@ const NavBarComp = () => {
                 >
                   Profile
                 </NavDropdown.Item>
-                {authState.username==="bindat1311" &&<NavDropdown.Item href="/addproduct">
+                {authState.username===admin &&<NavDropdown.Item href="/addproduct">
                   Add Product
                 </NavDropdown.Item>}
                 <NavDropdown.Item href="#action/3.3">
@@ -141,10 +126,10 @@ const NavBarComp = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-          )}
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 };
-export default NavBarComp;
+export default TestNavBarComp2;

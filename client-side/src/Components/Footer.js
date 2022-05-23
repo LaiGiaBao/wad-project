@@ -16,6 +16,9 @@ const Footer = () => {
         data-bs-toggle="tooltip"
         data-bs-placement="top"
         title="Go up"
+        onClick={() => {
+          window.scrollTo(0,0);
+        }}
       >
         <FontAwesomeIcon icon={solid("up-long")}></FontAwesomeIcon>
       </button>
