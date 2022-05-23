@@ -53,7 +53,7 @@ function CartDetails() {
         </thead>
         <tbody>
           {cartDetails.map((details, index) => {
-            totalPrice += details.Price
+            totalPrice += (details.Price* details.Quantity)
             return (
               <tr key={index}>
                 <td class = "rounded py-3">
@@ -70,7 +70,7 @@ function CartDetails() {
                 <td>
                   <div class="pt-1 mt-4">
                     <CurrencyFormat
-                      value={details.Price}
+                      value={details.Price * details.Quantity}
                       class= "h2"
                       displayType={"text"}
                       thousandSeparator={true}
