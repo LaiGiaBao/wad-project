@@ -5,6 +5,8 @@ import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
 const CardProduct = ({ product }) => {
   const { id, pictSource, name, price, colors, sizes } = product;
+  const [isBought, SetIsBought] = useState(false);
+  const [Quantity, SetQuantity] = useState(1);
   const listOfColors = colors.split(",");
   const listOfSizes = sizes.split(",");
   const { authState, cartDetails, setCartDetails } = useContext(AuthContext);
@@ -17,7 +19,7 @@ const CardProduct = ({ product }) => {
         let data = {
           ProductId: product.id,
           Price: product.price,
-          Quantity: 1,
+          Quantity: Quantity,
           CartId: response.data.slice(-1)[0].id,
         };
         axios
@@ -26,6 +28,7 @@ const CardProduct = ({ product }) => {
             alert("Added to Cart")
           });
       });
+    SetIsBought(true);
   };
   return (
     <div className="card">
@@ -35,7 +38,10 @@ const CardProduct = ({ product }) => {
       <div className="card_cart">
         <i className="bx bx-cart-alt"></i>
       </div>
-      <div className="card_img">
+      <div className="card_img" 
+            onClick={() => {
+              navigate(`product/${id}`);
+            }}>
         <img src={pictSource} alt="" />
       </div>
       <div className="card_title">{name}</div>
@@ -53,8 +59,10 @@ const CardProduct = ({ product }) => {
         ))}
       </div>
       <div className="card_action">
+        <input type="number" class="product_count" placeholder="1" min="1" max="10"
+                onChange={(event) => SetQuantity(event.target.value)}></input>
         {authState.status && (
-          <button className="Buy" onClick={buyButton}>
+          <button className="Buy" onClick={buyButton}  disabled={isBought}>
             Buy
           </button>
         )}
