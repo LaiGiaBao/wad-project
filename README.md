@@ -24,7 +24,7 @@ As this is an E-Commerce Website, we decided to create a mock website based on s
 After landing at the homepages, clients can see various products at first sight, there are no items that you need ? Maybe you didn't find it yet ! Try to use our **search** to search for it.  
 You can also **Look Up** the item's information to check whether they like it or not. 
 Every E-commerce website should have User system, in our Project, we release a system including **Sign Up** and **Sign In** for our clients.  
-After signed in successfully, you are able to **Add to Cart** your favorite items and **Check their Cart** to make sure there is no unneccessary items in your cart, otherwise, you can easily cancel the product in your cart then continue with your shopping experience.  
+After signed in successfully, you are able to **Add to Cart** your favorite items and **Check your Cart** to make sure there is no unneccessary items in your cart, otherwise, you can easily cancel the product in your cart then continue with your shopping experience.  
 If you are done with your shopping, The last thing you should do is just clicking at **Confirm** button to complete your shopping. 
 You can also **check your shopping history** directly in your profile.  
 ### Admin:
