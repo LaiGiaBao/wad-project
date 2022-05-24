@@ -8,7 +8,7 @@
 As this is an E-Commerce Website, we decided to create a mock website based on some famous e-commerce websites, including Shopee, GearVN
 
 ## 2.2 Platform and Tools Review
-![test](https://i.ibb.co/K0hfwG4/23264b905fcd7ed378a6b3c5d8f2a047-7598772829043055595.png)
+![test](https://i.ibb.co/TR8LY1t/hutao-money.gif)
 
 - GitHub
 - Bootstrap
