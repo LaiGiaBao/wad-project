@@ -43,8 +43,8 @@ to **Banning** accounts if they are against the rules.
 ## 3.1.2 Secondary Features
 Beside those primary things of the website, we are working on add some features, such as **More product by Category**,  
 **Sort by price**  
-![sort](https://i.ibb.co/GnWrLWf/sorting.png)
-and even more !!!
+![sort](https://i.ibb.co/GnWrLWf/sorting.png)  
+and even more !!!  
 If you like our product, or want to share your thought about it, please **Leave your feedback** below each product  
 ![Comment](https://i.ibb.co/yQwkzbN/Comment.png)
 
