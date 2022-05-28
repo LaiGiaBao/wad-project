@@ -30,8 +30,21 @@ const CardProduct = ({ product }) => {
       });
     SetIsBought(true);
   };
+
+  const SetScroll = () => {
+    const maxWordNum = 20;    //There can be at max 20 letters in the title, anymore than that and we will have to scroll
+    var offset = (-1)*(product.name.length / maxWordNum -1)*100;  //Get the offset
+    if (offset > 0)
+      offset = 0;   //No need to scroll
+
+    var secondPerOffset= 0.05;
+    var duration = secondPerOffset * (-1)*offset;  //The greater the offset, the greater the duration
+    
+    document.documentElement.style.setProperty('--scroll-offset', offset + '%');
+    document.documentElement.style.setProperty('--scroll-duration', duration + 's');
+  }
   return (
-    <div className="card">
+    <div className="card mx-5">
       <div className="card_like">
         <i className="bx bx-heart"></i>
       </div>
@@ -44,9 +57,11 @@ const CardProduct = ({ product }) => {
             }}>
         <img src={pictSource} alt="" />
       </div>
-      <div className="card_title">{name}</div>
+      <div className="card_title">
+        <div class="scrollable_text" onMouseEnter= {()=> SetScroll()}>{name}</div>
+        </div>
       <div className="card_price"> {price}</div>
-      <div className="card_size">
+      <div className="card_size overflow-hidden">
         <h3>Size:</h3>
         {listOfSizes.map((size) => (
           <span key={size}>{size}</span>
@@ -59,15 +74,16 @@ const CardProduct = ({ product }) => {
         ))}
       </div>
       <div className="card_action">
-        <input type="number" className="product_count" placeholder="1" min="1" max="10"
+        <input type="number" class="product_count" placeholder="1" min="1" max="10"
                 onChange={(event) => SetQuantity(event.target.value)}></input>
+        
         {authState.status && (
-          <button className="Buy" onClick={buyButton}  disabled={isBought}>
+          <button class="product_buy" onClick={buyButton}  disabled={isBought}>
             Buy
           </button>
         )}
         <button
-          className="Add"
+          class=  "product_details"
           onClick={() => {
             navigate(`product/${id}`);
           }}
