@@ -32,15 +32,17 @@ function SpecifiedCategory() {
     },[sortType])
     
   return (
-    <div className="product-list">
-        <h1>{category}</h1>
-        <select name="order" id="" onChange={(e) => setSortType(e.target.value)}>
-            <option value="1">From highest to lowest</option>
-            <option value="2">From lowest to highest</option>
+    <div className="product-list pt-5">
+        <h1  class= "text-center mt-5">{category}</h1>
+        <select 
+            class= "d-flex my-3 mx-auto w-25 p-2 rounded form-control form-control-lg text-center" 
+            name="order" id="" onChange={(e) => setSortType(e.target.value)}>
+            <option value="1" class="h5">From highest to lowest</option>
+            <option value="2" class="h5"> From lowest to highest</option>
         </select>
-        <div className="items">
+        <div className="items" style={{whiteSpace: 'normal', marginLeft: '7.5rem'}}>
             {products.map(product => (
-                <div key={product.id} >
+                <div key={product.id} style={{display: 'inline'}}>
                     <CardProduct product={product}/>
                 </div>
             ))}

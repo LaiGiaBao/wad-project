@@ -6,12 +6,10 @@
 .items {
   overflow: auto;
   white-space: nowrap;
-
   padding-top: 5rem;
 }
-.product-list{
-  display: inline;
-}
+
+
 .product-list h2 {
   font-size: 40px;
   margin-top: 10rem;
