@@ -34,12 +34,10 @@ If you are done with your shopping, The last thing you should do is just clickin
 You can also **check your shopping history** directly in your profile.  
 
 ### Admin:
-On the admin side or we can say: Superior view, we can do everything we want, from **Adding** product
+On the admin side or we can say: Superior view, we can do everything we want, including **Adding** product
 ![Add product](https://i.ibb.co/SKZHtS6/addproduct.jpg)
 and **Delete** product
 ![Delete product](https://i.ibb.co/x2ks6YS/manageproduct1.jpg) 
-to **Banning** accounts if they are against the rules.  
-![Working](https://i0.wp.com/nu-lite.com.au/wp-content/uploads/2018/12/Working_on_it.jpg)
 ## 3.1.2 Secondary Features
 Beside those primary things of the website, we are working on add some features, such as **More product by Category**,  
 **Sort by price**  
@@ -54,9 +52,28 @@ If you like our product, or want to share your thought about it, please **Leave 
 ## 3.2.3 Class Diagram
 # CHAPTER 4: SYSTEM IMPLEMENTATION
 # CHAPTER 5: CONCLUSION AND DISCUSSION
-## 5.1 List of accomplished word
+## 5.1 List of accomplished works
+Currently, we've been completed these tasks:  
+&#9745; Login    
+&#9745; Sign Up  
+&#9745; **Buy** Function  
+&#9745; **Details** Page  
+&#9745; **Cart** Page  
+&#9745; **Sort**  
+&#9745; **Landing** Page  
+&#9745; **Search**  
+&#9745; **Profile** Page
+&#9745; **Add new Product** Page
+&#9745; User Authentication
 ## 5.2 Strength and Weakness
-## 5.3 Future work
+## 5.3 Future work  
+&#9744; Ban account
+&#9744; Category Tags
+&#9744; Filter
+&#9744; Refill product quantity
+&#9744; Admin Authentication
+
+
 # REFERENCES
 
 
