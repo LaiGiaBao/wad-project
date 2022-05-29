@@ -48,8 +48,10 @@ If you like our product, or want to share your thought about it, please **Leave 
 
 ## 3.2 System Design Specification
 ## 3.2.1 Use-Case Diagram
-## 3.2.2 Activity Diagram
-## 3.2.3 Class Diagram
+https://drive.google.com/file/d/1i7pLTng9VeQSb_yF4nGto30ukjxRouCv/view?usp=sharing
+## 3.2.2 Sequence Diagram
+https://drive.google.com/file/d/1d-Djnbo5QJ6Gn8PysNt8BtgJt2YQJSpH/view?usp=sharing
+## 3.2.3 Activity Diagram
 # CHAPTER 4: SYSTEM IMPLEMENTATION
 # CHAPTER 5: CONCLUSION AND DISCUSSION
 ## 5.1 List of accomplished works
