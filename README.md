@@ -10,12 +10,14 @@ As this is an E-Commerce Website, we decided to create a mock website based on s
 ## 2.2 Platform and Tools Review
 ![test](https://i.ibb.co/TR8LY1t/hutao-money.gif)
 
-- GitHub
-- Bootstrap
-- ReactJS
-- ExpressJS
-- NodeJS
-- MySQL (XAMPP)
+| Tools | Description |
+|---|---|
+| GitHub | Provide distributed version control and source code management using Git, so that every member can collaborate on the project. Through Github, we mainly use the basic functionalities of Git such as push, pull, fetch, merge branch, etc.  |
+| Bootstrap | Is a free and open-source CSS framework, with built-in responsive capability. We used it to speed up the styling process, minimize the CSS files needed, and keep the whole application style coherent. |
+| ReactJS | Is a free and open-source JavaScript library for front-end web development. It is maintained by Meta (creator of Facebook) as well as its community. ReactJS itself is very fast and powerful, and it also comes with many dependencies for different tasks. Using this, we were able to quickly develop a relatively sophisticated product. |
+| ExpressJS | Is a free and open-source Node.js framework for back-end web application development and APIs to the front-end side. It is considered the standard, the default framework for Node.js. |
+| NodeJS | Is an open-source and cross-platform environment for back-end development, with Javascript as the programming language. It allows us developers to write scripts on the server-side to create a dynamic web application. |
+| MySQL (XAMPP) | Is an open-source relational database management system (RDBMS). It provides database, each organizes data as tables, with columns and rows, and each table can relate to one another. It can create, read, update, and remove data using Queries. |
 
 # CHAPTER 3: SYSTEM DESIGN
 # 3.1 Features
