@@ -47,10 +47,13 @@ If you like our product, or want to share your thought about it, please **Leave 
 ![Comment](https://i.ibb.co/yQwkzbN/Comment.png)
 
 ## 3.2 System Design Specification
-## 3.2.1 Use-Case Diagram
-https://drive.google.com/file/d/1i7pLTng9VeQSb_yF4nGto30ukjxRouCv/view?usp=sharing
+## 3.2.1 Use-Case Diagram  
+![Use Case](https://user-images.githubusercontent.com/69633140/170947231-53c9aca2-ff5c-4b61-8600-8c39aa93abe6.png)
+
 ## 3.2.2 Sequence Diagram
-https://drive.google.com/file/d/1d-Djnbo5QJ6Gn8PysNt8BtgJt2YQJSpH/view?usp=sharing
+
+![Sequence Diagram](https://user-images.githubusercontent.com/69633140/170947476-21fc3e80-7d0b-4409-a9ed-e9f8f0084824.png)
+
 ## 3.2.3 Activity Diagram
 # CHAPTER 4: SYSTEM IMPLEMENTATION
 # CHAPTER 5: CONCLUSION AND DISCUSSION
