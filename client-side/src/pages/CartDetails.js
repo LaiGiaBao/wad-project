@@ -51,7 +51,7 @@ function CartDetails() {
   }
   return (
     <div class="container-fluid h-custom w-75 mt-5">
-      <h2 class="text-center display-2 mb-5">Products in Cart</h2>
+      <h2 class="text-center display-3 mb-5">Products in Cart</h2>
       <table class="table table-hover">
         <thead>
           <tr>
@@ -70,7 +70,9 @@ function CartDetails() {
                     <div class="col-md-4 ">
                       <img class="rounded" style={{width: "100%", height: "100px", objectFit: "cover" }} src = {details.pictSource} alt=""></img>
                     </div>
-                    <p class="col-md-8 h2 pt-4 mt-1"> {details.name}</p>
+                    <span class= "col-md-8 h-100 d-flex align-self-center h2 mt-1">
+                      {details.name}
+                    </span>
                   </div>        
                 </td>
                 <td>
@@ -89,7 +91,7 @@ function CartDetails() {
                 </td>
                 {(!authState.cartStatus &&authState.cartId===id)&&
                   (<td><button
-                          class="btn btn-danger btn-lg mt-4 " 
+                          class="btn btn-danger btn-lg mt-4" 
                           onClick={() => {deleteProduct(details.id)}}>X</button></td>)}
               </tr>
             );
@@ -115,7 +117,7 @@ function CartDetails() {
       <div class="d-flex">
         {(!authState.cartStatus &&authState.cartId===id) && 
           <button
-            class="btn btn-primary btn-lg btn-block px-5 mx-auto mt-5 w-50" 
+            class="btn btn-primary btn-lg btn-block px-5 mx-auto mt-5 w-50 my-5" 
             onClick={() => updateDetailCart(totalPrice)}>Confirm</button>}
       </div>
      

@@ -32,7 +32,15 @@ function Home() {
         return (
           <div key={category.id} className="product-list">
             <h2 class = "text-center">{category.category}</h2>
-            <h3 class = "text-center"><Link to={`/product/byCategory/${category.id}`}>See All</Link></h3>
+            <div class="d-flex">
+              <Link class="mx-auto" to={`/product/byCategory/${category.id}`}>
+                <button class="btn btn-primary px-4 m-1 mx-auto">
+                  <i class="fa fa-arrow-right"></i>
+                </button>
+              </Link>
+            </div>
+
+
             <div class="items">
               {listOfFilteredProducts.map((product) => (
                 <CardProduct product={product} key={product.id} />
