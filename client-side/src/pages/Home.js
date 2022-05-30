@@ -6,16 +6,22 @@ import "../styles/card-product.css";
 import { AuthContext } from "../helpers/AuthContext";
 import { Link } from "react-router-dom";
 function Home() {
+  
   const [listOfProducts, setListOfProducts] = useState([]);
   const [categories, setCategories] = useState([]);
-  const { searchText, setSearchText, cartId } = useContext(AuthContext);
+  const { searchText, authState } = useContext(AuthContext);
   useEffect(() => {
+    if(authState.cartId !== 0) {
+      window.location.reload();
+
+    }
     axios.get("http://localhost:3001/products").then((response) => {
       setListOfProducts(response.data);
     });
     axios.get("http://localhost:3001/categories").then((response) => {
       setCategories(response.data);
     });
+    console.log("authState",authState);
   }, []);
   const RenderProducts = () => {
     return categories.map((category) => {

@@ -1,8 +1,8 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/card-product.css";
-import React, { useState, Fragment, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthContext } from "./helpers/AuthContext";
 import axios from "axios";
 import NavBarComp from "./Components/NavBarComp";
@@ -13,8 +13,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import CartDetails from "./pages/CartDetails";
-import TestNavBarComp from "./Components/TestNavBarComp";
-import TestNavBarComp2 from "./Components/TestNavBarComp2";
+
 import SpecifiedCategory from "./pages/SpecifiedCategory";
 import ProductManagement from "./pages/ProductManagement";
 function App() {
@@ -32,16 +31,18 @@ function App() {
   const [cartDetails, setCartDetails] = useState([]);
   useEffect(() => {
     setIsLoading(true)
-    axios
+     axios
       .get("http://localhost:3001/auth/auth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
       })
       .then((response) => {
-        if (response.data.error) {
+        console.log("jwt",response.data)
+        if (response.data.error != null) {
           setAuthState({ ...authState, status: false });
-        } else {
+        } 
+        else {
           setAuthState({
             ...authState,
             username: response.data.username,
@@ -51,10 +52,10 @@ function App() {
             cartId: response.data.cartId,
           });      
         }
+        console.log("authState2",authState);
         setIsLoading(false)
       });
   }, []);
-  useEffect(() => {},[authState])
   return (
     <div className="App">
       <AuthContext.Provider
@@ -73,20 +74,28 @@ function App() {
       >
         <Router>
           {isLoading && <div>Loading...</div>}
-          {authState.status ? <TestNavBarComp2/> : <TestNavBarComp/>}    
+          <NavBarComp/>
           <Routes>
-            <Route path="/" exact element={<Home />}></Route>
-            <Route path="/addproduct" exact element={<AddNewProduct />}></Route>
-            <Route path="/product/:id" exact element={<Product />}></Route>
+            <Route path="/" exact element={<Home />}>
+              
+            </Route>
+            <Route path="addproduct" exact element={<AddNewProduct />}></Route>
+            <Route path="product">
+              <Route path="byCategory/:id" exact element={<SpecifiedCategory/>}></Route>
+              <Route path=":id" exact element={<Product />}></Route>
+            </Route>
             <Route path="/register" exact element={<Register />}></Route>
             <Route path="/login" exact element={<Login />}></Route>
             <Route path="/profile/:id" exact element={<Profile />}></Route>
-            <Route path="/product/byCategory/:id" exact element={<SpecifiedCategory/>}></Route>
             <Route
-              path="/cart-details/:id"
+              path="cart-details"
+            >
+              <Route
+              path=":id"
               exact
               element={<CartDetails />}
             ></Route>
+            </Route>
             <Route path="/product-manage" exact element={<ProductManagement/>}></Route>
           </Routes>
         </Router>

@@ -1,6 +1,4 @@
 import React, { useState, useContext } from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
@@ -9,7 +7,7 @@ function Login() {
   let navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { setAuthState, authState, setCartId, setIsLoading } = useContext(AuthContext);
+  const { setAuthState, authState, setIsLoading } = useContext(AuthContext);
   const login = () => {
     setIsLoading(true);
     setTimeout(()=>{
@@ -25,7 +23,7 @@ function Login() {
           console.log(response.data);
           let { data: user } = response;
           localStorage.setItem("accessToken", user.token);
-          if (user.cartStatus == true) {
+          if (user.cartStatus === true) {
             axios
               .post(
                 "http://localhost:3001/carts",

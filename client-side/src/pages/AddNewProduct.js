@@ -4,16 +4,14 @@ import axios from "axios";
 import * as Yup from "yup";
 import "../styles/add-product.css";
 import { AuthContext } from "../helpers/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 function AddNewProduct() {
   const [categories, setCategories] = useState([]);
   const [productImg, setProductImg] = useState("");
   const navigate = useNavigate();
   const {authState,admin} = useContext(AuthContext)
   useEffect(() => {
-  
-  },[])
-  useEffect(() => {
+
     axios.get("http://localhost:3001/categories").then((response) => {
       setCategories(response.data);
     });

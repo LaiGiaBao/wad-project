@@ -19,7 +19,6 @@ function Register() {
   });
   const onSubmit = (data) => {
     axios.post("http://localhost:3001/auth", data).then((response) => {
-    console.log("Registered")  
     if(response.data.error) {
         alert(response.data.error)
       }
@@ -34,7 +33,7 @@ function Register() {
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-md-9 col-lg-6 col-xl-5">
             <img src="https://media.istockphoto.com/vectors/people-register-online-set-registration-or-sign-up-user-interface-vector-id1210117007?k=20&m=1210117007&s=612x612&w=0&h=RUWBusayhB1HpaQ5Z0GQAoJ_Hs4tf74ZsA2qa-Tpg38="
-                class="img-fluid p-5" alt="Sample image"></img>
+                class="img-fluid p-5" alt="Sample"></img>
         </div>
 
         <div class="col-md-3 col-lg-6 col-xl-4 offset-xl-1">

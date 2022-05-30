@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React from "react";
 import { Carousel } from "react-bootstrap";
 import "../styles/carousel-layout.css";
 const CarouselLayout = (children) => {

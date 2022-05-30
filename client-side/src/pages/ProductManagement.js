@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React,{useEffect, useState, useContext} from 'react'
-import { AuthContext } from '../helpers/AuthContext';
+import React,{useEffect, useState} from 'react'
+
 import CurrencyFormat from "react-currency-format";
 function ProductManagement() {
     const [listOfProduct, setListOfProduct] = useState([]);
@@ -14,14 +14,14 @@ function ProductManagement() {
         axios.delete(`http://localhost:3001/products/${id}`).then((response) => {
             setListOfProduct(
                 listOfProduct.filter((product) => {
-                  return product.id != id;
+                  return product.id !== id;
                 })
               );
         })
     }
   return (
     <div class="container-fluid h-custom w-75 mt-5">
-    <h2 class="text-center display-2 mb-5">Products in Cart</h2>
+    <h2 class="text-center display-2 mb-5">Products in Store</h2>
     <table class="table table-hover">
       <thead>
         <tr>

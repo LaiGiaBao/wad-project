@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect, useContext } from "react";
+import React, {  useState, useContext } from "react";
 import {
   Navbar,
   Nav,
@@ -11,21 +11,17 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   solid,
-  regular,
-  brands,
+
 } from "@fortawesome/fontawesome-svg-core/import.macro";
 import "../styles/navbar.css";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 const NavBarComp = () => {
-  const { searchText, setSearchText } = useContext(AuthContext);
+  const { setSearchText } = useContext(AuthContext);
   const { authState, setAuthState } = useContext(AuthContext);
-  const { admin, setAdmin } = useContext(AuthContext);
+  const { admin } = useContext(AuthContext);
   const [inputText, setInputText] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    console.log("Component rerendering")
-  },[authState])
   const logOut = () => {
     localStorage.removeItem("accessToken");
     setAuthState({
@@ -69,13 +65,20 @@ const NavBarComp = () => {
                 onChange={(event) => {
                   setInputText(event.target.value);
                 }}
+                onKeyPress={(e) => {
+                  if(e.key==="Enter") {
+                    console.log(inputText.toLowerCase())
+                    setSearchText(inputText.toLowerCase());
+                  }
+                }}
               />
               <Button
                 variant="outline-light"
-                onClick={() => {
-                  console.log(inputText.toLowerCase());
-                  setSearchText(inputText.toLowerCase());
-                }}
+                // onClick={() => {
+                //   console.log(inputText.toLowerCase());
+                //   setSearchText(inputText.toLowerCase());
+                // }}
+                
               >
                 Search
               </Button>
@@ -125,12 +128,12 @@ const NavBarComp = () => {
                 >
                   Profile
                 </NavDropdown.Item>
-                {authState.username==="bindat1311" &&<NavDropdown.Item href="/addproduct">
+                {authState.username===admin &&<NavDropdown.Item href="/addproduct">
                   Add Product
                 </NavDropdown.Item>}
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
+                {authState.username===admin &&<NavDropdown.Item href="/product-manage">
+                  Manage Product
+                </NavDropdown.Item>}
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   onClick={() => {

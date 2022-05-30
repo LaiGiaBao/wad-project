@@ -19,7 +19,7 @@ function SpecifiedCategory() {
     },[])
     useEffect(() => {
         const sort = (type) => {
-            if (type==2) {
+            if (type===2) {
                 const sortProduct = [...products].sort((a,b) => a.price - b.price)
                 setProducts(sortProduct)
             }

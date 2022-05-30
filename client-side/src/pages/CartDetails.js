@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../helpers/AuthContext";
 import axios from "axios";
 import CurrencyFormat from "react-currency-format";
@@ -8,7 +8,6 @@ function CartDetails() {
   const [cartDetails, setCartDetails] = useState([]);
   const { authState, setAuthState } = useContext(AuthContext);
   let totalPrice =0;
-  const navigate = useNavigate();
   useEffect(() => {
     axios
       .get(`http://localhost:3001/cart-details/byCartId/${id}`)
@@ -47,7 +46,7 @@ function CartDetails() {
   };
   const deleteProduct = (id) => {
     setCartDetails(
-      cartDetails.filter((detail) => {return detail.id != id})
+      cartDetails.filter((detail) => {return detail.id !== id})
     )
   }
   return (
@@ -88,7 +87,7 @@ function CartDetails() {
                     />
                   </div>
                 </td>
-                {(!authState.cartStatus &&authState.cartId==id)&&
+                {(!authState.cartStatus &&authState.cartId===id)&&
                   (<td><button
                           class="btn btn-danger btn-lg mt-4 " 
                           onClick={() => {deleteProduct(details.id)}}>X</button></td>)}
@@ -114,7 +113,7 @@ function CartDetails() {
         </tfoot>
       </table>
       <div class="d-flex">
-        {(!authState.cartStatus &&authState.cartId==id) && 
+        {(!authState.cartStatus &&authState.cartId===id) && 
           <button
             class="btn btn-primary btn-lg btn-block px-5 mx-auto mt-5 w-50" 
             onClick={() => updateDetailCart(totalPrice)}>Confirm</button>}
