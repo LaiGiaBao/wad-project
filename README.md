@@ -79,8 +79,9 @@ Currently, we've been completed these tasks:
 &#9744; Filter  
 &#9744; Refill product quantity  
 &#9744; Admin Authentication  
-
-
+&#9744; Fix Create new Cart bug
+&#9744; Fix NavBar bug
+&#9744; Improve JWT Authentication
 # REFERENCES
 
 
