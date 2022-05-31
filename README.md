@@ -69,16 +69,16 @@ Currently, we've been completed these tasks:
 &#9745; **Sort**  
 &#9745; **Landing** Page  
 &#9745; **Search**  
-&#9745; **Profile** Page
-&#9745; **Add new Product** Page
+&#9745; **Profile** Page  
+&#9745; **Add new Product** Page  
 &#9745; User Authentication
 ## 5.2 Strength and Weakness
-## 5.3 Future work  
-&#9744; Ban account
-&#9744; Category Tags
-&#9744; Filter
-&#9744; Refill product quantity
-&#9744; Admin Authentication
+## 5.3 Future work   
+&#9744; Ban account  
+&#9744; Category Tags  
+&#9744; Filter  
+&#9744; Refill product quantity  
+&#9744; Admin Authentication  
 
 
 # REFERENCES
