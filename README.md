@@ -53,8 +53,11 @@ If you like our product, or want to share your thought about it, please **Leave 
 ![Use Case](https://user-images.githubusercontent.com/69633140/170947231-53c9aca2-ff5c-4b61-8600-8c39aa93abe6.png)
 
 ## 3.2.2 Sequence Diagram
-
+**Searching Products Sequence Diagram**
 ![Sequence Diagram](https://user-images.githubusercontent.com/69633140/170947476-21fc3e80-7d0b-4409-a9ed-e9f8f0084824.png)
+
+**Shopping Cart Sequence Diagram**
+![Sequence Diagram2](https://user-images.githubusercontent.com/74531792/171872872-a4a3541f-143f-4323-a93c-c117f12f8239.png)
 
 ## 3.2.3 Activity Diagram
 # CHAPTER 4: SYSTEM IMPLEMENTATION
