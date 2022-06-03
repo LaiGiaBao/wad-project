@@ -1,8 +1,25 @@
 # wad-project
 # CHAPTER 1: INTRODUCTION
-## Motivation
-## Problems Statement
-## Scope
+## 1.1 Motivation
+Nowadays, E-Commerce websites are very popular, common, and in high demand. By creating a web application of this kind, we can hone our skills and knowledge in the most practical way possible, and prepare us to work in the industry in the near future. 
+## 1.2 Problems Statement
+We need an E-Commerce web application that has the typical CRUD functionalities and is as professional as possible.
+## 1.3 Scope
+- Goal and deliverables:
+    - Data CRUD functionalities (create, read, update, and delete) with:
+        - Products
+        - Carts and carts details
+        - User profile
+        - Comments
+    - Other popular features and properties in a website:
+        - Searching and categorizing
+        - Routing
+        - Logging in
+        - Registration
+        - Styling
+
+- Cost: 3 members working in 3 months.
+- Deadline: 8 June, 2022 
 # CHAPTER 2: LITERATURE REVIEW
 ## 2.1 Similar Application/Systems
 As this is an E-Commerce Website, we decided to create a mock website based on some famous e-commerce websites, including Shopee, GearVN
