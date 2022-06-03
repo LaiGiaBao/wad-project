@@ -5,8 +5,9 @@ const { validateToken } = require("../middlewares/AuthMiddleware");
 const { QueryTypes } = require("sequelize");
 router.get("/byUserId/:id", async (req, res) => {
   const id = req.params.id;
-  const listOfCarts = await Carts.findAll({
+  const listOfCarts = await Carts.findOne({
     where: { UserId: id },
+    order: [['id','DESC']]
   });
   res.json(listOfCarts);
 });

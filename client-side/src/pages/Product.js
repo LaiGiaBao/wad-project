@@ -19,11 +19,7 @@ function Product() {
     const images = this.myRef.current.children;
     images.className = "active";
   };
-
-  let componentDidMount = () => {
-    const { index } = this.state;
-    this.myRef.current.children[index].className = "active";
-  };
+  console.log("product", authState)
   useEffect(() => {
     axios.get(`http://localhost:3001/products/byId/${id}`).then((response) => {
       setProduct(response.data);
@@ -40,12 +36,23 @@ function Product() {
       })
       .then(() => {
         setComments(
-          comments.filter((comment) => {
-            return comment.id != id;
-          })
+          comments.filter((comment) => 
+            comment.id !== id
+          )
         );
       });
   };
+  const editComment = (id) => {
+    let newComment = prompt("Your new comment: ");
+    axios.put(`http://localhost:3001/comments/${id}`,
+    {comment : newComment, },
+      {headers: 
+        {accessToken:localStorage.getItem("accessToken")}
+      }
+      ).then(()=> {
+        window.location.reload();
+    })
+  }
   const addComment = () => {
     axios
       .post(
@@ -66,7 +73,7 @@ function Product() {
         } else {
           const commentToAdd = {
             commentBody: newComment,
-            username: response.data.fullname,
+            username: authState.fullname,
           };
           setComments([...comments, commentToAdd]);
           setNewComment("");
@@ -178,16 +185,28 @@ function Product() {
                   </div>
                   <div className="comment col-md-11 h5" key={key}>
                     <label>{comment.username}</label>
-                    <div className="comment-body h5">{comment.commentBody}</div>
-                    {authState.username === comment.username && (
-                  <button
-                    onClick={() => {
-                      deleteComment(comment.id);
-                    }}
-                  >
-                    X
-                  </button>
+                    <div className="comment-body h5">{comment.commentBody}
+                    
+                    </div>
+                    {authState.fullname === comment.username && (
+                  <>
+                    <button
+                      onClick={() => {
+                        deleteComment(comment.id);
+                      }}
+                    >
+                      X
+                    </button>
+                    <button
+                      onClick={() => {
+                        editComment(comment.id);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </>
                 )}
+                
                   </div>
                 </div>
               ))}

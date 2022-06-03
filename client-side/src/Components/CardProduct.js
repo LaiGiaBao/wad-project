@@ -3,6 +3,7 @@ import "../styles/card-product.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
+import CurrencyFormat from "react-currency-format";
 const CardProduct = ({ product }) => {
   const { id, pictSource, name, price, colors, sizes } = product;
   const [isBought, SetIsBought] = useState(false);
@@ -43,7 +44,7 @@ const CardProduct = ({ product }) => {
     document.documentElement.style.setProperty('--scroll-duration', duration + 's');
   }
   return (
-    <div className="card mx-5">
+    <div className="card mx-5" >
       <div className="card_like">
         <i className="bx bx-heart"></i>
       </div>
@@ -54,12 +55,17 @@ const CardProduct = ({ product }) => {
             onClick={() => {
               navigate(`product/${id}`);
             }}>
-        <img src={pictSource} alt="" />
+        <img src={pictSource} alt=""/>
       </div>
       <div className="card_title">
         <div class="scrollable_text" onMouseEnter= {()=> SetScroll()}>{name}</div>
         </div>
-      <div className="card_price"> {price}</div>
+      <div className="card_price"> <CurrencyFormat
+                value={price}
+                displayType={"text"}
+                thousandSeparator={true}
+                suffix={"đ"}
+              /></div>
       <div className="card_size overflow-hidden">
         <h3>Size:</h3>
         {listOfSizes.map((size) => (

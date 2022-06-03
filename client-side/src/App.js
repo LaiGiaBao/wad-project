@@ -29,20 +29,25 @@ function App() {
   const [isLoading,setIsLoading] = useState(true)
   const [searchText, setSearchText] = useState("");
   const [cartDetails, setCartDetails] = useState([]);
+  const [test, setTest] = useState({});
+  
   useEffect(() => {
+    console.log("test",authState);
+  },[authState])
+  useEffect(async () => {
     setIsLoading(true)
-     axios
+     await axios
       .get("http://localhost:3001/auth/auth", {
         headers: {
           accessToken: localStorage.getItem("accessToken"),
         },
       })
       .then((response) => {
-        console.log("jwt",response.data)
-        if (response.data.error != null) {
+        if (response.data.error) {
           setAuthState({ ...authState, status: false });
         } 
         else {
+          console.log(response.data);
           setAuthState({
             ...authState,
             username: response.data.username,
@@ -52,7 +57,6 @@ function App() {
             cartId: response.data.cartId,
           });      
         }
-        console.log("authState2",authState);
         setIsLoading(false)
       });
   }, []);
@@ -97,6 +101,7 @@ function App() {
             ></Route>
             </Route>
             <Route path="/product-manage" exact element={<ProductManagement/>}></Route>
+            <Route path="*" element={<h1>Page not found</h1>}></Route>
           </Routes>
         </Router>
       </AuthContext.Provider>

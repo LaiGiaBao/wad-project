@@ -20,7 +20,12 @@ function Login() {
         if (response.data.error) {
           alert(response.data.error);
         } else {
-          console.log(response.data);
+          setAuthState({
+            ...authState,
+            username: response.data.username,
+            id: response.data.id,
+            fullname: response.data.fullname,
+          })
           let { data: user } = response;
           localStorage.setItem("accessToken", user.token);
           if (user.cartStatus === true) {
@@ -39,7 +44,7 @@ function Login() {
               )
               .then((response) => {
                 axios.get(`http://localhost:3001/carts/byUserId/${user.id}`).then((response1) => {
-                  setAuthState({...authState, cartId: response1.data[-1].id, cartStatus: false})
+                  setAuthState({...authState, cartId: response1.data.id, cartStatus: response1.data.status})
                 })
                 console.log(
                   "Create new Cart because the previous cart is completed"
@@ -49,10 +54,8 @@ function Login() {
           else{
             setAuthState({
               ...authState,
-              username: user.username,
-              id: user.id,
-              fullname: user.fullname,
               cartId: user.cartId,
+              cartStatus: false,
             });
           }
           setIsLoading(false)

@@ -11,7 +11,6 @@ function AddNewProduct() {
   const navigate = useNavigate();
   const {authState,admin} = useContext(AuthContext)
   useEffect(() => {
-
     axios.get("http://localhost:3001/categories").then((response) => {
       setCategories(response.data);
     });
@@ -50,8 +49,10 @@ function AddNewProduct() {
       setProductImg(data.value);
     }   
   }
-
-  return (
+  if(authState.username != admin) return (
+    <h1>Not Found</h1>
+  )
+  return (  
     <div className="container-fluid h-custom">
       <div className="row d-flex justify-content-center align-items-center h-100 py-5">
         <div className="col-md-5 p-5">
