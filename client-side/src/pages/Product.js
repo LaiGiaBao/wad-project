@@ -174,16 +174,17 @@ function Product() {
               
               <button class= "col-md-1 btn btn-primary btn-lg btn-block comment-bt" onClick={addComment}>Post</button>
             </div>
-            <div className="comment-list col-md-11 pt-4 bg-light rounded">
+            <div className="comment-list col-md-11 pt-4 rounded">
               {comments.map((comment, key) => (
-                <div class= "row">
-                  <div class = "col-md-1">
+                <div class= "row pt-3 bg-light mb-3 mx-0 rounded">
+                  <div class = "col-md-1 d-flex align-self-center mb-3">
                     <img 
-                      class = "img-fluid mx-3 d-block  w-75" 
+                      class = "img-fluid mx-2 d-block w-100" 
+                      
                       src= "https://i.ibb.co/tQzC2n3/kisspng-computer-icons-user-profile-clip-art-big-5ac52838aa8c72-2286905915228703286986.png">
                     </img>
                   </div>
-                  <div className="comment col-md-11 h5" key={key}>
+                  <div className="comment col-md-9 h5 row" key={key}>
                     <label>{comment.username}</label>
                     <div className="comment-body h5">{comment.commentBody}
                     
@@ -208,6 +209,17 @@ function Product() {
                 )}
                 
                   </div>
+
+                  {authState.username === comment.username && (
+                      <button
+                          className= "col-md-1 btn btn-danger m-3 d-flex align-self-center h2 mt-1 mx-auto opacity-75"
+                          onClick={() => {
+                          deleteComment(comment.id);
+                        }}
+                      >
+                        <span class="mx-auto"> X</span>
+                      </button>
+                    )}
                 </div>
               ))}
             </div>
