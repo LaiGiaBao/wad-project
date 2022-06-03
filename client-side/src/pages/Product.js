@@ -40,7 +40,8 @@ function Product() {
             comment.id !== id
           )
         );
-      });
+      })
+      .then(()=>window.location.reload());
   };
   const editComment = (id) => {
     let newComment = prompt("Your new comment: ");
@@ -162,7 +163,7 @@ function Product() {
             <div className="add-comment-container row py-2">
               <div class= "col-md-11">
                 <input
-                  class = "form-control form-control-lg"
+                  class = "form-control form-control-lg d-flex"
                   type="text"
                   autoComplete="off"
                   value={newComment}
@@ -172,11 +173,13 @@ function Product() {
                 />
               </div>
               
-              <button class= "col-md-1 btn btn-primary btn-lg btn-block comment-bt" onClick={addComment}>Post</button>
+              <button class= "col-md-1 btn btn-primary btn-lg comment-bt" onClick={addComment}>
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+              </button>
             </div>
-            <div className="comment-list col-md-11 pt-4 rounded">
+            <div className="col-md-11 pt-4 rounded">
               {comments.map((comment, key) => (
-                <div class= "row pt-3 bg-light mb-3 mx-0 rounded">
+                <div class= "row pt-3 bg-light mb-3 mx-0 rounded" style = {{width:"99.7%"}}>
                   <div class = "col-md-1 d-flex align-self-center mb-3">
                     <img 
                       class = "img-fluid mx-2 d-block w-100" 
@@ -185,11 +188,11 @@ function Product() {
                     </img>
                   </div>
                   <div className="comment col-md-9 h5 row" key={key}>
-                    <label>{comment.username}</label>
-                    <div className="comment-body h5">{comment.commentBody}
-                    
+                    <label class="">{comment.username}</label>
+                    <div class="h5 text-break" >
+                      {comment.commentBody}
                     </div>
-                    {authState.fullname === comment.username && (
+                    {/*authState.fullname === comment.username && (
                   <>
                     <button
                       onClick={() => {
@@ -206,19 +209,32 @@ function Product() {
                       Edit
                     </button>
                   </>
-                )}
+                    )*/}
                 
                   </div>
 
                   {authState.username === comment.username && (
-                      <button
-                          className= "col-md-1 btn btn-danger m-3 d-flex align-self-center h2 mt-1 mx-auto opacity-75"
+                    <div class="col-md-1 m-3 align-self-center mt-1 mx-auto opacity-75">
+                       <button
+                          className= "btn btn-danger m-1"
+                          style = {{width:"3rem"}}
                           onClick={() => {
-                          deleteComment(comment.id);
+                            deleteComment(comment.id);
                         }}
                       >
-                        <span class="mx-auto"> X</span>
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                       </button>
+                      <button
+                          className= "btn btn-primary m-1"
+                          style = {{width:"3rem"}}
+                          onClick={() => {
+                            editComment(comment.id);
+                        }}
+                      >
+                        <i class="fa fa-edit"></i>
+                      </button>
+                    </div>
+                     
                     )}
                 </div>
               ))}
