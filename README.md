@@ -65,19 +65,21 @@ If you like our product, or want to share your thought about it, please **Leave 
 ![Comment](https://i.ibb.co/yQwkzbN/Comment.png)
 
 ## 3.2 System Design Specification
-## 3.2.1 Use-Case Diagram  
+## 3.2.1 Database Design 
+![Relationship Diagram](https://user-images.githubusercontent.com/69633140/171998974-82337781-4359-4a5e-981f-6b4c3f0c3e4e.png)
+
+## 3.2.2 Use-Case Diagram  
 ![Use Case](https://user-images.githubusercontent.com/69633140/170947231-53c9aca2-ff5c-4b61-8600-8c39aa93abe6.png)
 
-## 3.2.2 Sequence Diagram
+## 3.2.3 Sequence Diagram
 **Searching Products Sequence Diagram**
 ![Sequence Diagram](https://user-images.githubusercontent.com/69633140/170947476-21fc3e80-7d0b-4409-a9ed-e9f8f0084824.png)
 
 **Shopping Cart Sequence Diagram**
 ![Sequence Diagram2](https://user-images.githubusercontent.com/74531792/171872872-a4a3541f-143f-4323-a93c-c117f12f8239.png)
 
-![Relationship Diagram](https://user-images.githubusercontent.com/69633140/171998974-82337781-4359-4a5e-981f-6b4c3f0c3e4e.png)
 
-## 3.2.3 Activity Diagram
+## 3.2.4 Activity Diagram
 **Creating new Shopping Cart**
 
 ![Activity Diagram](https://user-images.githubusercontent.com/74531792/171990079-09c07914-ca1b-4c37-8cc9-aecb285ded5b.png)
