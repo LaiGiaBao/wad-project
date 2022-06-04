@@ -25,7 +25,6 @@ We need an E-Commerce web application that has the typical CRUD functionalities 
 As this is an E-Commerce Website, we decided to create a mock website based on some famous e-commerce websites, including Shopee, GearVN
 
 ## 2.2 Platform and Tools Review
-![test](https://i.ibb.co/TR8LY1t/hutao-money.gif)
 
 | Tools | Description |
 |---|---|
@@ -76,6 +75,7 @@ If you like our product, or want to share your thought about it, please **Leave 
 **Shopping Cart Sequence Diagram**
 ![Sequence Diagram2](https://user-images.githubusercontent.com/74531792/171872872-a4a3541f-143f-4323-a93c-c117f12f8239.png)
 
+![Relationship Diagram](https://user-images.githubusercontent.com/69633140/171998974-82337781-4359-4a5e-981f-6b4c3f0c3e4e.png)
 
 ## 3.2.3 Activity Diagram
 **Creating new Shopping Cart**
@@ -86,10 +86,8 @@ If you like our product, or want to share your thought about it, please **Leave 
 
 ![Activi Diagram](https://user-images.githubusercontent.com/74531792/171990088-cbf00ef0-2c5e-46ac-bda8-c1380ea8e311.png)
 
-
-# CHAPTER 4: SYSTEM IMPLEMENTATION
-# CHAPTER 5: CONCLUSION AND DISCUSSION
-## 5.1 List of accomplished works
+# CHAPTER 4: CONCLUSION AND DISCUSSION
+## 4.1 List of accomplished works
 Currently, we've been completed these tasks:  
 &#9745; Login    
 &#9745; Sign Up  
@@ -102,8 +100,7 @@ Currently, we've been completed these tasks:
 &#9745; **Profile** Page  
 &#9745; **Add new Product** Page  
 &#9745; User Authentication
-## 5.2 Strength and Weakness
-## 5.3 Future work   
+## 4.2 Future work   
 &#9744; Ban account  
 &#9744; Category Tags  
 &#9744; Filter  
