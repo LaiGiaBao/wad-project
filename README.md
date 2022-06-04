@@ -76,7 +76,17 @@ If you like our product, or want to share your thought about it, please **Leave 
 **Shopping Cart Sequence Diagram**
 ![Sequence Diagram2](https://user-images.githubusercontent.com/74531792/171872872-a4a3541f-143f-4323-a93c-c117f12f8239.png)
 
+
 ## 3.2.3 Activity Diagram
+**Creating new Shopping Cart**
+
+![Activity Diagram](https://user-images.githubusercontent.com/74531792/171990079-09c07914-ca1b-4c37-8cc9-aecb285ded5b.png)
+
+**Dealing with existing Shopping cart**
+
+![Activi Diagram](https://user-images.githubusercontent.com/74531792/171990088-cbf00ef0-2c5e-46ac-bda8-c1380ea8e311.png)
+
+
 # CHAPTER 4: SYSTEM IMPLEMENTATION
 # CHAPTER 5: CONCLUSION AND DISCUSSION
 ## 5.1 List of accomplished works
