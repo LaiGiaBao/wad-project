@@ -112,7 +112,9 @@ Currently, we've been completed these tasks:
 &#9744; Fix NavBar bug  
 &#9744; Improve JWT Authentication  
 # REFERENCES
-
-
+- Bootstrap document: https://getbootstrap.com/docs/5.1/getting-started/introduction/
+- ReactJS document: https://reactjs.org/docs/getting-started.html
+- XAMPP download: https://www.apachefriends.org/
+- Fullstack course: https://www.youtube.com/watch?v=Hl7diL7SFw8&list=PLpPqplz6dKxUaZ630TY1BFIo5nP-_x-nL
 
 
