@@ -14,13 +14,13 @@ const CardProduct = ({ product }) => {
   let navigate = useNavigate();
   const buyButton = () => {
     axios
-      .get(`http://localhost:3001/carts/byUserId/${authState.id}`)
+      .get(`http://localhost:3001/carts/latestByUserId/${authState.id}`)
       .then((response) => {
         let data = {
           ProductId: product.id,
           Price: product.price,
           Quantity: Quantity,
-          CartId: response.data.slice(-1)[0].id,
+          CartId: response.data.id,
         };
         axios
           .post("http://localhost:3001/cart-details", data)
@@ -90,7 +90,7 @@ const CardProduct = ({ product }) => {
         <button
           class=  "product_details"
           onClick={() => {
-            navigate(`product/${id}`);
+            navigate(`/product/${id}`);
           }}
         >
           Detail

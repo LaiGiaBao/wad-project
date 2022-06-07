@@ -44,10 +44,14 @@ function CartDetails() {
       alert("BUY SUCCESSFUL");
     })
   };
-  const deleteProduct = (id) => {
-    setCartDetails(
-      cartDetails.filter((detail) => {return detail.id !== id})
-    )
+  const deleteProduct = (productId) => {
+    axios.delete(`http://localhost:3001/cart-details/${id}/${productId}`).then(() => {
+      setCartDetails(
+        cartDetails.filter((detail) => {return detail.id !== id})
+      )
+      
+    }).then(() => window.location.reload() )
+    
   }
   return (
     <div class="container-fluid h-custom w-75 mt-5">
@@ -89,10 +93,13 @@ function CartDetails() {
                     />
                   </div>
                 </td>
-                {(!authState.cartStatus &&authState.cartId===id)&&
-                  (<td><button
+                {authState.cartStatus== false &&authState.cartId==id&&
+                  (
+                    <td><button
                           class="btn btn-danger btn-lg mt-4" 
-                          onClick={() => {deleteProduct(details.id)}}>X</button></td>)}
+                          onClick={() => {deleteProduct(details.ProductId)}}>X</button></td>
+                  )}
+                  
               </tr>
             );
           })}
@@ -115,7 +122,7 @@ function CartDetails() {
         </tfoot>
       </table>
       <div class="d-flex">
-        {(!authState.cartStatus &&authState.cartId===id) && 
+        {(!authState.cartStatus &&authState.cartId==id) && 
           <button
             class="btn btn-primary btn-lg btn-block px-5 mx-auto mt-5 w-50 my-5" 
             onClick={() => updateDetailCart(totalPrice)}>Confirm</button>}

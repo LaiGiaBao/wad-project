@@ -20,7 +20,7 @@ function SpecifiedCategory() {
     },[])
     useEffect(() => {
         const sort = (type) => {
-            if (type===2) {
+            if (type==1) {
                 const sortProduct = [...products].sort((a,b) => a.price - b.price)
                 setProducts(sortProduct)
             }
@@ -46,8 +46,8 @@ function SpecifiedCategory() {
         <select 
             class= "d-flex my-3 mx-auto w-25 p-2 rounded form-control form-control-lg text-center" 
             name="order" id="" onChange={(e) => setSortType(e.target.value)}>
-            <option value="1" class="h5">From highest to lowest</option>
-            <option value="2" class="h5"> From lowest to highest</option>
+            <option value="1" class="h5">From lowest to highest</option>
+            <option value="2" class="h5"> From highest to lowest</option>
         </select>
         <div className="items" style={{whiteSpace: 'normal', marginLeft: '7.5rem'}}>
             {products.map(product => (

@@ -37,6 +37,7 @@ router.delete("/:commentId", validateToken, async (req, res) => {
       id: commentId,
     }
   })
+  res.json("deleted")
 })
 router.put("/:commentId",validateToken, async (req,res) => {
   const commentId = req.params.commentId;

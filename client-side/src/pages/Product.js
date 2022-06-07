@@ -6,6 +6,7 @@ import "../styles/product-detail.css";
 import DetailsThumb from "../Components/DetailsThumb";
 import Colors from "../Components/Colors";
 import { AuthContext } from "../helpers/AuthContext";
+import CurrencyFormat from "react-currency-format";
 function Product() {
   let { id } = useParams();
   const [product, setProduct] = useState({});
@@ -35,13 +36,8 @@ function Product() {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
-        setComments(
-          comments.filter((comment) => 
-            comment.id !== id
-          )
-        );
+        window.location.reload()
       })
-      .then(()=>window.location.reload());
   };
   const editComment = (id) => {
     let newComment = prompt("Your new comment: ");
@@ -141,7 +137,14 @@ function Product() {
             <div className="box">
               <div className="row">
                 <h2 class="display-3 text-uppercase product-name">{product.name}</h2>
-                <span class="price-tag bg-light display-6 text-uppercase mx-3 p-3 px-4">${product.price}</span>
+                <span class="price-tag bg-light display-6 text-uppercase mx-3 p-3 px-4">
+                <CurrencyFormat
+                value={product.price}
+                displayType={"text"}
+                thousandSeparator={true}
+                suffix={"đ"}
+              />
+                </span>
               </div>
               <div class="px-1">
                 <div className="colors">
@@ -213,7 +216,7 @@ function Product() {
                 
                   </div>
 
-                  {authState.username === comment.username && (
+                  {authState.fullname === comment.username && (
                     <div class="col-md-1 m-3 align-self-center mt-1 mx-auto opacity-75">
                        <button
                           className= "btn btn-danger m-1"

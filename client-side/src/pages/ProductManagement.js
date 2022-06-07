@@ -12,11 +12,7 @@ function ProductManagement() {
     }, [])
     const deleteButton = (id) => {
         axios.delete(`http://localhost:3001/products/${id}`).then((response) => {
-            setListOfProduct(
-                listOfProduct.filter((product) => {
-                  return product.id !== id;
-                })
-              );
+            window.location.reload()
         })
     }
   return (

@@ -27,8 +27,9 @@ function Login() {
             fullname: response.data.fullname,
           })
           let { data: user } = response;
+          console.log(user)
           localStorage.setItem("accessToken", user.token);
-          if (user.cartStatus === true) {
+          if (user.cartStatus === 1) {
             axios
               .post(
                 "http://localhost:3001/carts",
@@ -43,9 +44,7 @@ function Login() {
                 }
               )
               .then((response) => {
-                axios.get(`http://localhost:3001/carts/byUserId/${user.id}`).then((response1) => {
-                  setAuthState({...authState, cartId: response1.data.id, cartStatus: response1.data.status})
-                })
+                setAuthState({...authState, cartId: response.data.id, cartStatus: response.data.status});
                 console.log(
                   "Create new Cart because the previous cart is completed"
                 );

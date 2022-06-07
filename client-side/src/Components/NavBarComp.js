@@ -65,7 +65,7 @@ const NavBarComp = () => {
                 onChange={(event) => {
                   setInputText(event.target.value);
                 }}
-                onKeyPress={(e) => {
+                onKeyPressCapture={(e) => {
                   if(e.key==="Enter") {
                     console.log(inputText.toLowerCase())
                     setSearchText(inputText.toLowerCase());
@@ -74,11 +74,10 @@ const NavBarComp = () => {
               />
               <Button
                 variant="outline-light"
-                // onClick={() => {
-                //   console.log(inputText.toLowerCase());
-                //   setSearchText(inputText.toLowerCase());
-                // }}
-                
+                onClick={() => {
+                  console.log(inputText.toLowerCase());
+                  setSearchText(inputText.toLowerCase());
+                }}
               >
                 Search
               </Button>
